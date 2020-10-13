@@ -16,8 +16,8 @@ alias mkae='make'
 alias home='cd ~'
 
 # open specific dotfiles in vim
-alias bp='vim ~/projects/bash_profile'
-alias vimrc='vim ~/projects/vimrc'
+alias bp='vim ~/projects/dotfiles/.bash_profile'
+alias vimrc='vim ~/projects/dotfiles/.vimrc'
 
 # quick access to project directories
 alias c="cd ~/projects/c_book"
@@ -27,6 +27,9 @@ alias prj='cd ~/projects'
 
 # for ls colors
 alias ls='ls -GFh'
+
+# end tmux session shortcut
+alias tend='tmux kill-session'
 ############################################
 
 

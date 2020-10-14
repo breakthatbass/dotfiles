@@ -27,7 +27,4 @@ set wrap						" don't split words between lines
 set nu                          " show line numbers
 set incsearch                   " get results as you search
 set backspace=indent,eol,start  " make backspace work properly
-
-"packadd! dracula
-"syntax enable
-"colorscheme dracula
+set textwidth=80

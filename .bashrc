@@ -10,6 +10,7 @@ alias brc='vim ~/projects/dotfiles/.bashrc'
 alias vimrc='vim ~/projects/dotfiles/.vimrc'
 alias c="cd ~/projects/c_book"
 alias dsa="cd ~/projects/dsa"
+alias dot='cd ~/projects/dotfiles'
 alias crap="cd ~/projects/crap"
 alias prj='cd ~/projects'
 alias ls='ls -GFh'  # ls colors

@@ -20,6 +20,7 @@ filetype plugin indent on    " required
 
 
 syntax on                       " syntax highlighting
+color default
 
 set tabstop=4 softtabstop=4     " tab -> 4 chars long, soft -> 4 spaces long
 set shiftwidth=4				" better autotab spacing

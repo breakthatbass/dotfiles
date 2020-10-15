@@ -26,7 +26,7 @@ alias tend='tmux kill-session'
 # x;ym		- indicates the color code. x is 1 or 0. 1 = dark, 0 = light, y = 30 - 36, m = m
 # \e[m		- indicates end of color
 
-sim_term=1	# toggle switch for default prompt
+sim_term=0	# toggle switch for default prompt
 if [ $sim_term == 1 ]
 then
 	export PS1="\e[0;33m\w\e[m\e[1;31m$\e[m "

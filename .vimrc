@@ -38,6 +38,11 @@ set incsearch                   " get results as you search
 set backspace=indent,eol,start  " make backspace work properly
 set textwidth=80
 set laststatus=2				" show status bar, even if one file is open
+set directory^=$HOME/.vim/tmp// " put all .swp files here
+set ignorecase					" search commands are case insensitive
+set incsearch					" show search matches incrementally
+set mouse=a						" allow mouse interaction
+
 
 let g:airline_theme='dracula'
 

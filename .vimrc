@@ -42,5 +42,9 @@ set laststatus=2				" show status bar, even if one file is open
 let g:airline_theme='dracula'
 
 " NERDtree settings
-map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n
+map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n	
+
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup
+

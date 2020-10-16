@@ -14,6 +14,13 @@ Plugin 'junegunn/goyo.vim'
 " auto close parentheses, brackets, quotes
 Plugin 'jiangmiao/auto-pairs'   
 
+" directory listing in vim
+Plugin 'scrooloose/nerdtree'
+
+" status bar for the bottom of windows
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -32,3 +39,7 @@ set backspace=indent,eol,start  " make backspace work properly
 set textwidth=80
 set laststatus=2				" show status bar, even if one file is open
 
+" NERDtree settings
+let g:airline_theme='dracula'
+map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

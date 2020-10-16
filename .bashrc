@@ -26,20 +26,15 @@ alias tend='tmux kill-session'
 # x;ym		- indicates the color code. x is 1 or 0. 1 = dark, 0 = light, y = 30 - 36, m = m
 # \e[m		- indicates end of color
 
-sim_term=0	# toggle switch for default prompt
+sim_term=1	# toggle switch for default prompt
 if [ $sim_term == 1 ]
 then
-	export PS1="\e[0;33m\w\e[m\e[1;31m$\e[m "
+	export PS1="\e[0;32m\W$\e[m "
 fi
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-# Setting PATH for Python 3.7
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
-export PATH
 
 
 # Setting PATH for Python 3.8
@@ -79,11 +74,5 @@ function create
 function gitgo
 {
   git add . && git commit -m "$1" && git push
-}
-
-# basic c project boilerplate
-function boilerplate
-{
-  touch .gitignore && touch Makefile && touch README.md
 }
 

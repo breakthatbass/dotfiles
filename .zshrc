@@ -29,7 +29,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias bashconfig="vim ~/.bashrc"
 alias py="python3"
 alias h="cd ~"
-alias vimconfig="vim ~/projects/dotfile/.vimrc"
+alias vimconfig="vim ~/projects/dotfiles/.vimrc"
 alias tend="tmux kill-session"
 ##### dir shortcuts
 alias c="cd ~/projects/c_book"

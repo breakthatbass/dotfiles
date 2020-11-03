@@ -53,6 +53,11 @@ vs() {
 	open $1 -a "visual studio code"
 }
 
+# clean out those annoying swp files
+cleanvim() {
+	cd ~/.vim/tmp && rm *.*.swp && rm *.swp
+}
+
 # PYTHON STUFF
 # Setting PATH for Python 3.8
 # The original version is saved in .bash_profile.pysave

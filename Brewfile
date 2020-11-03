@@ -1,3 +1,5 @@
+# install by running 'brew bundle'
+
 # Taps
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'

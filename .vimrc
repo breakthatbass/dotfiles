@@ -21,20 +21,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes' 
 
-Plugin 'sainnhe/gruvbox-material'
-
-Plugin 'embark-theme/vim', { 'as': 'embark' }
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 syntax on                       " syntax highlighting
-" color default
 colorscheme zellner
-
-set background=dark
 
 set tabstop=4 softtabstop=4     " tab -> 4 chars long, soft -> 4 spaces long
 set shiftwidth=4				" better autotab spacing

@@ -23,13 +23,18 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'sainnhe/gruvbox-material'
 
+Plugin 'embark-theme/vim', { 'as': 'embark' }
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 syntax on                       " syntax highlighting
-color default 
+" color default
+colorscheme zellnert
+
+set background=dark
 
 set tabstop=4 softtabstop=4     " tab -> 4 chars long, soft -> 4 spaces long
 set shiftwidth=4				" better autotab spacing
@@ -44,7 +49,7 @@ set directory^=$HOME/.vim/tmp// " put all .swp files here
 set ignorecase					" search commands are case insensitive
 set incsearch					" show search matches incrementally
 set mouse=a						" allow mouse interaction
-
+"set termguicolors
 
 let g:airline_theme='dracula'
 

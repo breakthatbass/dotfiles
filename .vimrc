@@ -32,7 +32,7 @@ filetype plugin indent on    " required
 
 syntax on                       " syntax highlighting
 " color default
-colorscheme zellnert
+colorscheme zellner
 
 set background=dark
 

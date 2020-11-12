@@ -17,6 +17,9 @@ Plugin 'jiangmiao/auto-pairs'
 " directory listing in vim
 Plugin 'scrooloose/nerdtree'
 
+" colorscheme nord
+Plugin 'arcticicestudio/nord-vim'
+
 " status bar for the bottom of windows
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes' 
@@ -27,7 +30,7 @@ filetype plugin indent on    " required
 
 
 syntax on                       " syntax highlighting
-colorscheme zellner
+colorscheme default
 
 set tabstop=4 softtabstop=4     " tab -> 4 chars long, soft -> 4 spaces long
 set shiftwidth=4				" better autotab spacing

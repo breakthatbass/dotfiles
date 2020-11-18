@@ -54,7 +54,7 @@ map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"set a toggle switch for when i don't wait airline to automatically open
+"set a toggle switch for when i don't want airline to automatically open
 let airline_auto=0
 if (airline_auto == 1)
 	autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup

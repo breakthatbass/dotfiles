@@ -1,33 +1,22 @@
 
+" PLUGIN START """"""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" add wakatime to vim
-Plugin 'wakatime/vim-wakatime'
-
-" goyo focus mode for writing in vim
-Plugin 'junegunn/goyo.vim'      
-
-" auto close parentheses, brackets, quotes
-Plugin 'jiangmiao/auto-pairs'   
-
-" directory listing in vim
-Plugin 'scrooloose/nerdtree'
-
-" colorscheme nord
-Plugin 'arcticicestudio/nord-vim'
-
-" status bar for the bottom of windows
-Plugin 'vim-airline/vim-airline'
+Plugin 'wakatime/vim-wakatime'  		" add wakatime to vim
+Plugin 'junegunn/goyo.vim'      		" goyo focus mode for writing in vim
+Plugin 'jiangmiao/auto-pairs'   		" auto close parentheses, brackets, quotes
+Plugin 'scrooloose/nerdtree'			" directory listing in vim
+Plugin 'arcticicestudio/nord-vim'		" colorscheme nord
+Plugin 'vim-airline/vim-airline'		" status bar for the bottom of windows
 Plugin 'vim-airline/vim-airline-themes' 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
+" PLUGIN END """"""""""""""""""""""""""""""""""""""""""""""""""
 
 syntax on                       " syntax highlighting
 colorscheme default
@@ -47,7 +36,7 @@ set incsearch					" show search matches incrementally
 set mouse=a						" allow mouse interaction
 "set termguicolors
 
-let g:airline_theme='dracula'
+let g:airline_theme='dracula'   
 
 " NERDtree settings
 map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n	

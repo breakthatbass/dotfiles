@@ -38,6 +38,7 @@ alias dsa="cd ~/projects/dsa"
 alias dot="cd ~/projects/dotfiles"
 alias crap="cd ~/projects/crap"
 alias prj="cd ~/projects"
+alias ostep="cd ~/projects/ostep"
 
 mkcdir() {
 	mkdir -p -- "$1" &&

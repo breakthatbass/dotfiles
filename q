@@ -10,6 +10,7 @@ Plugin 'jiangmiao/auto-pairs'   		" auto close parentheses, brackets, quotes
 Plugin 'scrooloose/nerdtree'			" directory listing in vim
 Plugin 'arcticicestudio/nord-vim'		" colorscheme nord
 Plugin 'vim-airline/vim-airline'		" status bar for the bottom of windows
+Plugin 'vim-airline/vim-airline-themes' 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,8 +32,9 @@ set directory^=$HOME/.vim/tmp// " put all .swp files here
 set ignorecase					" search commands are case insensitive
 set incsearch					" show search matches incrementally
 set mouse=a						" allow mouse interaction
+"set termguicolors
 
-"let g:airline_theme='dracula'  
+let g:airline_theme='dracula'   
 
 " NERDtree settings
 map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n	

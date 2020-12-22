@@ -32,7 +32,7 @@ set ignorecase					" search commands are case insensitive
 set incsearch					" show search matches incrementally
 set mouse=a						" allow mouse interaction
 
-"let g:airline_theme='dracula'  
+let g:airline_theme='dracula'  
 
 " NERDtree settings
 map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n	

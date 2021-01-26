@@ -10,6 +10,10 @@ Plugin 'jiangmiao/auto-pairs'   		" auto close parentheses, brackets, quotes
 Plugin 'scrooloose/nerdtree'			" directory listing in vim
 Plugin 'arcticicestudio/nord-vim'		" colorscheme nord
 Plugin 'vim-airline/vim-airline'		" status bar for the bottom of windows
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'wadackel/vim-dogrun'
+Plugin 'dracula/vim', {'name': 'dracula'}
+Plugin 'embark-theme/vim', {'as': 'embark'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -18,8 +22,8 @@ filetype plugin indent on    " required
 syntax on                       " syntax highlighting
 colorscheme nord
 
-set tabstop=4 softtabstop=4     " tab -> 4 chars long, soft -> 4 spaces long
-set shiftwidth=4				" better autotab spacing
+set tabstop=3 softtabstop=3     " tab -> 4 chars long, soft -> 4 spaces long
+set shiftwidth=3				" better autotab spacing
 set smartindent                 " indent for me
 set wrap						" don't split words between lines
 set nu                          " show line numbers

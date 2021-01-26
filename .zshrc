@@ -32,7 +32,7 @@ prompt pure
 alias zshconfig="vim  ~/projects/dotfiles/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias bashconfig="vim ~/.bashrc"
-alias py="python3"
+alias py="python3.9"
 alias vimconfig="vim ~/projects/dotfiles/.vimrc"
 alias tend="tmux kill-session"
 alias otool="otool -tvV"  # make default flags for otool
@@ -46,6 +46,12 @@ alias ostep-hw="cd ~/projects/ostep-hw"
 #alias aoc="cd ~/projects/aoc"  # advent of code directory
 
 alias vi='vim'
+
+# Git Ignore Generator
+gi() { 
+	curl -L -s https://www.toptal.com/developers/gitignore/api/"$1" \ 
+  >> .gitignore	
+}
 
 mkcdir() {
 	mkdir -p -- "$1" &&
@@ -69,7 +75,7 @@ cleanvim() {
 # PYTHON STUFF
 # Setting PATH for Python 3.8
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
+PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
 #export PATH
 export PATH=/usr/local/share/python:$PATH
 

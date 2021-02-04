@@ -32,7 +32,7 @@ prompt pure
 alias zshconfig="vim  ~/projects/dotfiles/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias bashconfig="vim ~/.bashrc"
-alias py="python3.9"
+alias py="python3"
 alias vimconfig="vim ~/projects/dotfiles/.vimrc"
 alias tend="tmux kill-session"
 alias otool="otool -tvV"  # make default flags for otool
@@ -64,7 +64,7 @@ gitgo() {
 }
 
 vs() {
-	open $1 -a "visual studio code"
+	touch $1 && open $1 -a "visual studio code"
 }
 
 # clean out those annoying swp files

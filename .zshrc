@@ -49,9 +49,23 @@ alias vi='vim'
 
 # Git Ignore Generator
 gi() { 
-	curl -L -s https://www.toptal.com/developers/gitignore/api/"$1" \ 
-  >> .gitignore	
+	curl -L -s https://www.toptal.com/developers/gitignore/api/"$1" > .gitignore	
 }
+
+
+# lang: find out lanuages and bytes in a github repo
+# usage: lang user repo
+lang() {
+	if [ -z "$1" ] || [ -z "$2" ]
+	then
+		echo "usage: lang user repo"
+		return 1
+	fi
+	curl \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos/$1/$2/languages
+}
+
 
 mkcdir() {
 	mkdir -p -- "$1" &&

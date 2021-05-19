@@ -21,6 +21,8 @@ call vundle#end()						" required
 filetype plugin indent on			" required
 
 syntax on								" syntax highlighting
+set t_Co=256
+set t_ut=
 colorscheme codedark					" VS Code syntax highlightinh 
 
 set tabstop=3 softtabstop=3		" tab -> 4 chars long, soft -> 4 spaces long
@@ -36,6 +38,9 @@ set directory^=$HOME/.vim/tmp//	" put all .swp files here
 set ignorecase							" search commands are case insensitive
 set incsearch							" show search matches incrementally
 set mouse=a								" allow mouse interaction
+set visualbell							" turn off annoying sounds"
+
+set t_vb=
 
 let g:airline_theme = 'codedark'
 

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ln -sfn ~/projects/dotfiles/.zshrc ~
+ln -sfn ~/projects/dotfiles/.vimrc ~
+ln -sfn ~/projects/dotfiles/.tmux.conf ~

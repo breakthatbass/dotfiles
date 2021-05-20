@@ -24,8 +24,11 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-autoload -U promptinit; promptinit
-prompt pure
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	# loading this causes problems in Linux, only load if on MacOS
+	autoload -U promptinit; promptinit
+	prompt pure
+fi
 
 # For a full list of active aliases, run `alias`.
 alias py="python3"

@@ -3,7 +3,7 @@ C_INCLUDE_PATH=/usr/local/include
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/taylorgamache/.oh-my-zsh"
+export ZSH="$HOME"/.oh-my-zsh
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"

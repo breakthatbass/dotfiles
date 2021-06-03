@@ -62,6 +62,20 @@ lang() {
   https://api.github.com/repos/$1/$2/languages
 }
 
+
+# add and commit in one go
+# usage: gitco file 'commit message'
+gitco() {
+	if [ "$#" -ne 2  ]; then
+		echo "usage: gitco file 'commit message'"
+	else
+		git add "$1"
+		git commit -m "$2"
+	fi
+}
+
+
+
 # mkdir and cd into it
 mkcdir() {
 	mkdir -p -- "$1" &&
@@ -90,3 +104,8 @@ export PATH=/usr/local/share/python:$PATH
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/binutils/lib"
+export CPPFLAGS="-I/usr/local/opt/binutils/include"

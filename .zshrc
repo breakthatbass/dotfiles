@@ -37,6 +37,11 @@ alias otool="otool -tvV"  # make default flags for otool
 alias vi='vim'
 alias tree='tree -C'	# print dir tree with colors
 
+# C & C++ cross-compilers for compiling programs for ARM Cortex
+# architecture on MacOS
+alias arm-gcc='arm-none-eabi-gcc'
+alias arm-g++='arm-none-eabi-g++'
+
 # quickly add testing framework file to project
 # usage: $ minunit > minunit.h
 minunit() {

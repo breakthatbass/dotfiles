@@ -23,7 +23,14 @@ filetype plugin indent on			" required
 syntax on								" syntax highlighting
 set t_Co=256
 set t_ut=
-colorscheme codedark					" VS Code syntax highlightinh 
+
+" set a toggle switch for when I want a light color theme
+let light=1
+if (light == 1)
+	colorscheme default
+else
+	colorscheme codedark				" VS Code syntax highlighti 
+endif
 
 set tabstop=3 softtabstop=3		" tab -> 4 chars long, soft -> 4 spaces long
 set shiftwidth=3						" better autotab spacing
@@ -50,7 +57,7 @@ map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "set a toggle switch for when i don't want NERDTree to automatically open
-let nerd_auto=1
+let nerd_auto=0
 if (nerd_auto == 1)
 	autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup
 endif

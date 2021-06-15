@@ -98,6 +98,16 @@ cleanvim() {
 	cd ~/.vim/tmp && rm *.*.swp && rm *.swp
 }
 
+
+# run valgrind more easily
+valg () {
+	valgrind --leak-check=full \
+         --show-leak-kinds=all \
+         --track-origins=yes \
+         --log-file=valgrind-out.txt \
+         ./"$@"
+}
+
 # PYTHON STUFF
 # Setting PATH for Python 3.8
 # The original version is saved in .bash_profile.pysave

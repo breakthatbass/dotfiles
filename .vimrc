@@ -24,13 +24,8 @@ syntax on								" syntax highlighting
 set t_Co=256
 set t_ut=
 
-" set a toggle switch for when I want a light color theme
-let light=1
-if (light == 1)
-	colorscheme default
-else
-	colorscheme codedark				" VS Code syntax highlighti 
-endif
+
+colorscheme default	"colorthemese i like: dracula, default, codedark
 
 set tabstop=3 softtabstop=3		" tab -> 4 chars long, soft -> 4 spaces long
 set shiftwidth=3						" better autotab spacing

@@ -1,5 +1,27 @@
 #!/bin/bash
 
+if [[ "$OSTYPE" == "linux-gnu*" ]]; then
+
+	sudo apt update
+
+	# get gcc and tools and add manpages for gcc
+	sudo apt install build-essential
+	sudo apt-get install manpages-dev
+
+	# install curl
+	sudo apt install curl
+	
+	# insall zsh and make it default shell then install oh-my-zsh
+	sudo apt install zsh
+	chsh -s $(which zsh)
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+	# install Java
+	sudo apt install default-jre
+
+fi
+
+
 ln -sfn ~/projects/dotfiles/.zshrc ~
 ln -sfn ~/projects/dotfiles/.vimrc ~
 ln -sfn ~/projects/dotfiles/.tmux.conf ~

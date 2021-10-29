@@ -25,7 +25,7 @@ set t_Co=256
 set t_ut=
 
 
-colorscheme default	"colorthemese i like: dracula, default, codedark
+colorscheme nord	"colorthemese i like: dracula, default, codedark
 
 set tabstop=3 softtabstop=3		" tab -> 4 chars long, soft -> 4 spaces long
 set shiftwidth=3						" better autotab spacing
@@ -57,3 +57,10 @@ if (nerd_auto == 1)
 	autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup
 endif
 
+" set a toggle switch for relative line numbers
+let rln=1
+if (rln == 1)
+	" turn relative line numbers on
+	:set relativenumber
+	:set rnu
+endif

@@ -44,7 +44,7 @@ set visualbell							" turn off annoying sounds"
 
 set t_vb=
 
-let g:airline_theme = 'codedark'
+let g:airline_theme = 'nord'
 
 " NERDtree settings
 map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n	

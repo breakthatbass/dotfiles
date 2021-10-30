@@ -8,7 +8,14 @@ GREEN='\033[1;32m'
 BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
-echo "Deteting your OS..."
+echo -n "Deteting your OS"
+sleep 1
+echo -n "."
+sleep 1
+echo -n "."
+sleep 1
+echo "."
+sleep 1
 
 if [[ "$OSTYPE" == "linux-gnu"* ]];
 then
@@ -43,9 +50,9 @@ then
 	echo -e "🍬  Installing the goodies"
 
 	# install homebrew
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	# run the brew file to install all the goodies
-	brew bundle
+	#brew bundle
 
 else
 	# if we're here then you got a job that probably requires windows...womp womp

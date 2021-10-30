@@ -1,6 +1,19 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+# install script --> detect the OS and install all the necessary goodies
+
+# colors for printing
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+BLUE='\033[1;36m'
+NC='\033[0m' # No Color
+
+echo "Deteting your OS..."
+
+if [[ "$OSTYPE" == "linux-gnu"* ]];
+then
+	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
+	echo -e "🍬  Installing the goodies"
 
 	sudo apt update
 
@@ -24,9 +37,24 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	chsh -s $(which zsh)
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+elif [[ "$OSTYPE" == "darwin"* ]];
+then
+	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
+	echo -e "🍬  Installing the goodies"
+
+	# install homebrew
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	# run the brew file to install all the goodies
+	brew bundle
+
+else
+	# if we're here then you got a job that probably requires windows...womp womp
+	echo -e "${RED}$OSTYPE${NC} is not supported...womp womp"
+	echo "exiting..."
+	exit 1
 fi
 
-
+# create the symlinks for the config files
 ln -sfn ~/projects/dotfiles/.zshrc ~
 ln -sfn ~/projects/dotfiles/.vimrc ~
 ln -sfn ~/projects/dotfiles/.tmux.conf ~

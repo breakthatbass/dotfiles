@@ -11,10 +11,11 @@ brew 'gdb'
 brew 'gcc'
 brew 'bat'
 brew 'glow'
-brew 'lynx'
 brew 'python'
 brew 'vim'
 brew 'tmux'
+brew 'fzf'
+brew 'fd'
 
 # Apps
 cask 'caffeine'

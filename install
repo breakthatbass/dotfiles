@@ -85,4 +85,10 @@ then
 	ln -sfn ~/projects/dotfiles/.zshrc ~
 	ln -sfn ~/projects/dotfiles/.vimrc ~
 	ln -sfn ~/projects/dotfiles/.tmux.conf ~
+
+	# install vim-fugitive git wrapper for vim
+	mkdir -p ~/.vim/pack/tpope/start
+	cd ~/.vim/pack/tpope/start
+	git clone https://tpope.io/vim/fugitive.git
+	vim -u NONE -c "helptags fugitive/doc" -c q
 fi

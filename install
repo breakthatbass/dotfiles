@@ -8,14 +8,25 @@ GREEN='\033[1;32m'
 BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
-echo -n "Deteting your OS"
-sleep 1
-echo -n "."
-sleep 1
-echo -n "."
-sleep 1
-echo "."
-sleep 1
+DEBUG=0
+
+if [[ DEBUG -gt 0 ]];
+then
+	echo -e "	${RED}DEBUG mode${NC}"
+fi
+
+# do something with a dramatic effect
+dramatic_effect() {
+	echo -n "Detecting your OS"
+	for (( i=0; i<3; i++ ))
+	do
+			sleep $1
+			echo -n "."
+	done
+	echo
+}
+
+dramatic_effect 0.5
 
 if [[ "$OSTYPE" == "linux-gnu"* ]];
 then
@@ -47,12 +58,19 @@ then
 elif [[ "$OSTYPE" == "darwin"* ]];
 then
 	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
-	echo -e "🍬  Installing the goodies"
+	if [[ DEBUG -gt 0 ]];
+	then
+		echo "debug mode"
+		echo -e "🍬  Installing the goodies"
+	
+	else
+		echo -e "🍬  Installing the goodies"
 
-	# install homebrew
-	#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	# run the brew file to install all the goodies
-	#brew bundle
+		# install homebrew
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		# run the brew file to install all the goodies
+		brew bundle
+	fi
 
 else
 	# if we're here then you got a job that probably requires windows...womp womp
@@ -61,7 +79,10 @@ else
 	exit 1
 fi
 
-# create the symlinks for the config files
-ln -sfn ~/projects/dotfiles/.zshrc ~
-ln -sfn ~/projects/dotfiles/.vimrc ~
-ln -sfn ~/projects/dotfiles/.tmux.conf ~
+if [[ ! DEBUG ]];
+then
+	# create the symlinks for the config files
+	ln -sfn ~/projects/dotfiles/.zshrc ~
+	ln -sfn ~/projects/dotfiles/.vimrc ~
+	ln -sfn ~/projects/dotfiles/.tmux.conf ~
+fi

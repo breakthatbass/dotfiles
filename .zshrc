@@ -37,6 +37,8 @@ alias otool="otool -tvV"  # make default flags for otool
 alias vi='vim'
 alias tree='tree -C'	# print dir tree with colors
 
+export BAT_THEME=Nord  # color them for bat (cat replacement)
+
 # C & C++ cross-compilers for compiling programs for ARM Cortex
 # architecture on MacOS
 alias arm-gcc='arm-none-eabi-gcc'

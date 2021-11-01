@@ -1,18 +1,3 @@
-" THEMES
-
-colorscheme nord	"colorthemese i like: dracula, default, codedark
-let g:airline_theme = 'nord'
-
-" NERDtree settings
-map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n	
-
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-"set a toggle switch for when i don't want NERDTree to automatically open
-let nerd_auto=0
-if (nerd_auto == 1)
-	autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup
-endif
 
 
 " VUNDLE & PLUGINS
@@ -28,7 +13,6 @@ Plugin 'jiangmiao/auto-pairs'   		" auto close parentheses, brackets, quotes
 Plugin 'scrooloose/nerdtree'			" directory listing in vim
 Plugin 'arcticicestudio/nord-vim'		" colorscheme nord
 Plugin 'vim-airline/vim-airline'		" status bar for the bottom of windows
-"Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wadackel/vim-dogrun'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'dracula/vim', {'name': 'dracula'}
@@ -38,6 +22,23 @@ Plugin 'editorconfig/editorconfig-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()						" required
 filetype plugin indent on			" required
+
+
+" THEMES
+
+colorscheme nord	"colorthemese i like: dracula, default, codedark
+let g:airline_theme = 'nord'
+
+" NERDtree settings
+map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n	
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"set a toggle switch for when i don't want NERDTree to automatically open
+let nerd_auto=0
+if (nerd_auto == 1)
+	autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup
+endif
 
 
 " SETTINGS
@@ -62,9 +63,10 @@ set mouse=a								" allow mouse interaction
 set visualbell							" turn off annoying sounds"
 set cursorline							" Highlight current line
 set noshowmode							" Don't show the current mode (airline.vim takes care of us)
+set t_vb=								" disable flashing
 
 
-" set a toggle switch for relative line numbers
+set a toggle switch for relative line numbers
 let rln=1
 if (rln == 1)
 	" turn relative line numbers on

@@ -66,7 +66,7 @@ set noshowmode							" Don't show the current mode (airline.vim takes care of us
 set t_vb=								" disable flashing
 
 
-set a toggle switch for relative line numbers
+" set a toggle switch for relative line numbers
 let rln=1
 if (rln == 1)
 	" turn relative line numbers on

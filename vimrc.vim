@@ -7,10 +7,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'wakatime/vim-wakatime'  		" add wakatime to vim
-Plugin 'junegunn/goyo.vim'      		" goyo focus mode for writing in vim
-Plugin 'jiangmiao/auto-pairs'   		" auto close parentheses, brackets, quotes
-Plugin 'scrooloose/nerdtree'			" directory listing in vim
+
+Plugin 'junegunn/goyo.vim'                    " goyo focus mode for writing in vim
+Plugin 'junegunn/fzf'
+Plugin 'jiangmiao/auto-pairs'                   " auto close parentheses, brackets, quotes
+Plugin 'wakatime/vim-wakatime'                    " add wakatime to vim
+Plugin 'scrooloose/nerdtree'                    " directory listing in vim
 Plugin 'arcticicestudio/nord-vim'		" colorscheme nord
 Plugin 'vim-airline/vim-airline'		" status bar for the bottom of windows
 Plugin 'wadackel/vim-dogrun'
@@ -19,6 +21,7 @@ Plugin 'dracula/vim', {'name': 'dracula'}
 Plugin 'embark-theme/vim', {'as': 'embark'}
 Plugin 'editorconfig/editorconfig-vim'
 
+
 " All of your Plugins must be added before the following line
 call vundle#end()						" required
 filetype plugin indent on			" required
@@ -26,7 +29,7 @@ filetype plugin indent on			" required
 
 " THEMES
 
-colorscheme nord	"colorthemese i like: dracula, default, codedark
+colorscheme nord 	"colorthemese i like: dracula, default, codedark
 let g:airline_theme = 'nord'
 
 " NERDtree settings

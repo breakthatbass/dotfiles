@@ -16,6 +16,8 @@ brew 'vim'
 brew 'tmux'
 brew 'fzf'
 brew 'fd'
+brew 'hyperfine'
+brew 'ripgrep'
 
 # Apps
 cask 'caffeine'

@@ -6,6 +6,7 @@
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 BLUE='\033[1;36m'
+PURP='\033[0;35m'
 NC='\033[0m' # No Color
 
 DEBUG=0
@@ -15,41 +16,46 @@ then
 	echo -e "	${RED}DEBUG mode${NC}"
 fi
 
-# do something with a dramatic effect
-dramatic_effect() {
-	echo -n "Detecting your OS"
-	for (( i=0; i<3; i++ ))
-	do
-			sleep $1
-			echo -n "."
-	done
-	echo
+# print this when we're done installing something
+done_task() {
+  echo -e "   ${RED}-->${NC} done"
 }
 
-dramatic_effect 0.5
 
 if [[ "$OSTYPE" == "linux-gnu"* ]];
 then
 	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
 	echo -e "🍬  Installing the goodies"
 
+  # install everything in this linux file
 	./linux
+  done_task
 
 elif [[ "$OSTYPE" == "darwin"* ]];
 then
 	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
 	if [[ DEBUG -gt 0 ]];
 	then
-		echo "debug mode"
+    echo "in DEBUG branch"
+    # this section is for testing stuff in the script
+    # without having to go through the homebrew nonsense
+    # and other installation stuff
+		
 		echo -e "🍬  Installing the goodies"
+    done_task
 	
 	else
 		echo -e "🍬  Installing the goodies"
 
 		# install homebrew
+    echo -e "installing ${PURP}HomeBrew${NC} 🍺"
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-		# run the brew file to install all the goodies
+    done_task		
+    
+		echo -e "🍬  Installing the goodies"
+# run the brew file to install all the goodies
 		brew bundle
+    done_task
 	fi
 
 else
@@ -59,20 +65,29 @@ else
 	exit 1
 fi
 
-if [[ ! DEBUG ]];
+
+if [[ DEBUG -lt 1 ]];
 then
-	# create the symlinks for the config files
+  # here we pput all the stuff we want to do that works
+  # on both Darwin and Linux
+
+	echo -e "creating symlinked ${PURP}dotfiles${NC}"
+# create the symlinks for the config files
 	ln -sfn ~/projects/dotfiles/.zshrc ~
 	ln -sfn ~/projects/dotfiles/.vimrc ~
 	ln -sfn ~/projects/dotfiles/.tmux.conf ~
+  done_task
+  
+  # make ZSH default shell
+  echo -e "setting ${PURP}ZSH${NC} as default shell"
+  sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
+  done_task
 
-	# install vim-fugitive git wrapper for vim
-	mkdir -p ~/.vim/pack/tpope/start
-	cd ~/.vim/pack/tpope/start
-	git clone https://tpope.io/vim/fugitive.git
-	vim -u NONE -c "helptags fugitive/doc" -c q
+  echo -e "installing ${PURP}oh-my-zsh${NC}"
+  # install oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  done_task
 
   # configure fzf for vim
   set rtp+=/usr/local/opt/fzf
-
 fi

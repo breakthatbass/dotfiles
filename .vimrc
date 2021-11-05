@@ -30,7 +30,7 @@ filetype plugin indent on			" required
 
 " THEMES
 
-colorscheme ron 	"colorthemese i like: dracula, default, codedark
+colorscheme nord 	"colorthemese i like: dracula, default, codedark
 let g:airline_theme = 'dracula'
 
 

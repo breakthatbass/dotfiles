@@ -7,7 +7,6 @@ export ZSH="$HOME"/.oh-my-zsh
 
 # make fzf recognize hidden files but not git stuff
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
-#export FZF_DEFAULT_COMMAND='find . -not -path ".git/*"'
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"

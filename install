@@ -71,4 +71,8 @@ then
 	cd ~/.vim/pack/tpope/start
 	git clone https://tpope.io/vim/fugitive.git
 	vim -u NONE -c "helptags fugitive/doc" -c q
+
+  # configure fzf for vim
+  set rtp+=/usr/local/opt/fzf
+
 fi

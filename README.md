@@ -1,7 +1,5 @@
 # dotfiles
-`.`
-
-### my .files
+my `.` files
 
 ## installation
 ```

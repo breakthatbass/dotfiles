@@ -160,6 +160,11 @@ function cd() {
     done
 }
 
+### the cd function above prevents cd from going to the home directory
+function home() {
+  cd "$HOME"
+}
+
 # PYTHON STUFF
 # Setting PATH for Python 3.8
 # The original version is saved in .bash_profile.pysave

@@ -113,6 +113,33 @@ valg () {
          ./"$@"
 }
 
+######################################################
+# incorporate fzf and vim better when opening a file #
+######################################################
+function v() {
+  if [[ "$#" == 0 ]];
+  then
+    # no args, search for files with fzf
+    vim -o `fzf`
+    return 0
+  elif [[ "$#" == 1 ]];
+  then
+    # open vim normally with arg
+    vim "$1"
+    return 0
+  else
+    # command was used wrong
+    echo -e "usage: vim [file]"
+    echo "    - run ${GREEN}vim${NC} with no args to find a file with ${PURP}fzf${NC}"
+    return 1
+  fi
+}
+
+
+
+
+
+
 function cd() {
     if [[ "$#" != 0 ]]; then
         builtin cd "$@";
@@ -132,6 +159,11 @@ function cd() {
         builtin cd "$dir" &> /dev/null
     done
 }
+
+
+#####
+# 
+####
 
 # PYTHON STUFF
 # Setting PATH for Python 3.8

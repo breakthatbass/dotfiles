@@ -104,8 +104,10 @@ cleanvim() {
 }
 
 
-# run valgrind more easily
-valg () {
+#####################################################################
+# more easily run valgrind without extra junk, save results in file #
+#####################################################################
+function valg () {
 	valgrind --leak-check=full \
          --show-leak-kinds=all \
          --track-origins=yes \
@@ -135,11 +137,9 @@ function v() {
   fi
 }
 
-
-
-
-
-
+######################################################
+# cd command to use fzf to find directories          #
+######################################################
 function cd() {
     if [[ "$#" != 0 ]]; then
         builtin cd "$@";
@@ -159,11 +159,6 @@ function cd() {
         builtin cd "$dir" &> /dev/null
     done
 }
-
-
-#####
-# 
-####
 
 # PYTHON STUFF
 # Setting PATH for Python 3.8

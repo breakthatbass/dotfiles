@@ -40,7 +40,7 @@ alias otool="otool -tvV"  # make default flags for otool
 alias vi='vim'
 alias tree='tree -C'	# print dir tree with colors
 # use fzf to preivew files
-alias pf="fzf --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+alias pf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 export BAT_THEME=Nord  # color them for bat (cat replacement)
 
@@ -131,7 +131,9 @@ function vzf() {
   then
     # no args, search for files and preview with fzf
     vim -o `fzf --preview 'bat --style=numbers \
-    --color=always --line-range :500 {}'`
+      --color=always --line-range :500 {}'`
+
+    #echo ${cmd}
     return 0
   else
     # command was used wrong

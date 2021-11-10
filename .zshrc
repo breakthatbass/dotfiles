@@ -117,24 +117,26 @@ function valg () {
          ./"$@"
 }
 
+# colors for printing
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+PURP='\033[1;34m'
+BLUE='\033[1;36m'
+NC='\033[0m' # No Color
 ######################################################
 # incorporate fzf and vim better when opening a file #
 ######################################################
-function v() {
+function vzf() {
   if [[ "$#" == 0 ]];
   then
-    # no args, search for files with fzf
-    vim -o `fzf`
-    return 0
-  elif [[ "$#" == 1 ]];
-  then
-    # open vim normally with arg
-    vim "$1"
+    # no args, search for files and preview with fzf
+    vim -o `fzf --preview 'bat --style=numbers \
+    --color=always --line-range :500 {}'`
     return 0
   else
     # command was used wrong
-    echo -e "usage: vim [file]"
-    echo "    - run ${GREEN}vim${NC} with no args to find a file with ${PURP}fzf${NC}"
+    echo "usage: ${PURP}vzf${NC}"
+    echo "    - search and preview files before opeing in ${GREEN}vim${NC}"
     return 1
   fi
 }

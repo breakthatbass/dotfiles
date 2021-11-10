@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# vzf - search and preview files with fzf and open them in vim
+# Taylor Gamache, 11-10-2021
+
+#alias pf="fzf --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+
+
+function vzf() {
+  if [[ "$#" != 0 ]]; then
+    echo "run again with no arguments"
+    return
+  fi
+
+
+  prev=`fzf --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down`
+  while true; do
+   # local prev=`fzf --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down`
+    read -rsn1 input
+    
+    case $input in
+      'q')
+          return
+        ;;
+
+      '\n')
+        echo "return!"
+      ;;
+
+      *)
+        echo -n "unknown"
+        ;;
+    esac
+
+    
+  done
+
+}
+
+vzf
+
+

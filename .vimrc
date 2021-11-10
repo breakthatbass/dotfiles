@@ -22,8 +22,9 @@ Plugin 'embark-theme/vim', {'as': 'embark'}
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'amix/vim-zenroom2'
 Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'fatih/vim-go'                 " go support in vim
 
-" All of your Plugins must be added before the following line
+"All of your Plugins must be added before the following line
 call vundle#end()						" required
 filetype plugin indent on			" required
 

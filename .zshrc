@@ -6,7 +6,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="$HOME"/.oh-my-zsh
 
 # make fzf recognize hidden files but not git stuff
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git"'
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
@@ -39,6 +39,8 @@ alias tend="tmux kill-session"
 alias otool="otool -tvV"  # make default flags for otool
 alias vi='vim'
 alias tree='tree -C'	# print dir tree with colors
+# use fzf to preivew files
+alias pf="fzf --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
 export BAT_THEME=Nord  # color them for bat (cat replacement)
 
@@ -183,3 +185,5 @@ export LDFLAGS="-L/usr/local/opt/binutils/lib"
 export CPPFLAGS="-I/usr/local/opt/binutils/include"
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 
+# mspdebug looks for this environment variable
+export MSPDEBUG_TILIB_PATH=~/ti/msp430-gcc/bin/

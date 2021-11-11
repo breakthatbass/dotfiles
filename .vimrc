@@ -74,7 +74,7 @@ set noshowmode							" Don't show the current mode (airline.vim takes care of us
 set t_vb=								" disable flashing
 
 
-# required for rust plugin
+" equired for rust plugin
 syntax enable
 filetype plugin indent on
 

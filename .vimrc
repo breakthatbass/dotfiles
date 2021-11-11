@@ -23,6 +23,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'amix/vim-zenroom2'
 Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'fatih/vim-go'                 " go support in vim
+Plugin 'rust-lang/rust.vim'
 
 "All of your Plugins must be added before the following line
 call vundle#end()						" required
@@ -72,6 +73,10 @@ set cursorline							" Highlight current line
 set noshowmode							" Don't show the current mode (airline.vim takes care of us)
 set t_vb=								" disable flashing
 
+
+# required for rust plugin
+syntax enable
+filetype plugin indent on
 
 " set a toggle switch for relative line numbers
 let rln=1

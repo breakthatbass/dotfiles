@@ -76,6 +76,8 @@ then
 	ln -sfn ~/projects/dotfiles/.zshrc ~
 	ln -sfn ~/projects/dotfiles/.vimrc ~
 	ln -sfn ~/projects/dotfiles/.tmux.conf ~
+  # bin directory
+  ln -s ~/projects/dotfiles/bin ~
   done_task
   
   # make ZSH default shell

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#####################################################################
+# more easily run valgrind without extra junk, save results in file #
+#####################################################################
+if [ "$#" -ne 2  ]; then
+    echo "usage: vgrind <compiled file>
+else
+
+valgrind --leak-check=full \
+        --show-leak-kinds=all \
+        --track-origins=yes \
+        --log-file=valgrind-out.txt \
+        ./"$@"

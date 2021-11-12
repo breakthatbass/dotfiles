@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# find out lanuages and bytes in a github repo
+# sort of useless but fun
+
+# usage: lang <user> <repo>
+
+if [ -z "$1" ] || [ -z "$2" ]
+then
+    echo "usage: lang <user> <repo>"
+    return 1
+fi
+curl \
+-H "Accept: application/vnd.github.v3+json" \
+https://api.github.com/repos/$1/$2/languages

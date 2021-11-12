@@ -1,0 +1,11 @@
+#!/bin.bash
+
+# add and commit in one go
+# usage: gco file 'commit message'
+
+if [ "$#" -ne 2  ]; then
+    echo "usage: gco <file> <'commit message'>"
+else
+    git add "$1"
+    git commit -m "$2"
+fi

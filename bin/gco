@@ -1,4 +1,4 @@
-#!/bin.bash
+#!/bin/bash
 
 # add and commit in one go
 # usage: gco file 'commit message'

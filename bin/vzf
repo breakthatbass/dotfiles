@@ -13,14 +13,11 @@ NC='\033[0m' # No Color
 
 if [[ "$#" == 0 ]];
 then
-# no args, search for files and preview with fzf
-vim -o `fzf --preview 'bat --style=numbers \
+  # no args, search for files and preview with fzf
+  vim -o `fzf --preview 'bat --style=numbers \
     --color=always --line-range :500 {}'`
-
-return 0
 else
-# command was used wrong
-echo "usage: ${PURP}vzf${NC}"
-echo "    - search and preview files before opeing in ${GREEN}vim${NC}"
-return 1
+  # command was used wrong
+  echo -e "usage: ${PURP}vzf${NC}"
+  echo -e "    - search and preview files before opeing in ${GREEN}vim${NC}"
 fi

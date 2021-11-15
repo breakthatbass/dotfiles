@@ -10,11 +10,13 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'junegunn/goyo.vim'                    " goyo focus mode for writing in vim
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/seoul256.vim'
 Plugin 'jiangmiao/auto-pairs'                   " auto close parentheses, brackets, quotes
 Plugin 'wakatime/vim-wakatime'                    " add wakatime to vim
 Plugin 'scrooloose/nerdtree'                    " directory listing in vim
 Plugin 'arcticicestudio/nord-vim'		" colorscheme nord
 Plugin 'vim-airline/vim-airline'		" status bar for the bottom of windows
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wadackel/vim-dogrun'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'dracula/vim', {'name': 'dracula'}
@@ -24,6 +26,7 @@ Plugin 'amix/vim-zenroom2'
 Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'fatih/vim-go'                 " go support in vim
 Plugin 'rust-lang/rust.vim'
+Plugin 'haystackandroid/snow'
 
 "All of your Plugins must be added before the following line
 call vundle#end()						" required
@@ -31,10 +34,15 @@ filetype plugin indent on			" required
 
 
 " THEMES
+" seoul256 (dark):
+"   Range:   233 (darkest) ~ 239 (lightest)
+"   Default: 237
+let g:seoul256_background = 235
+colo seoul256
+set background=dark
 
-colorscheme nord 	"colorthemese i like: dracula, default, codedark
-let g:airline_theme = 'dracula'
-
+" airline themes can be found at: https://github.com/vim-airline/vim-airline/wiki/Screenshots
+let g:airline_theme = 'minimalist'
 
 
 " NERDtree settings

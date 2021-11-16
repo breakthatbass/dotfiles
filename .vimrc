@@ -57,6 +57,9 @@ set visualbell                    " turn off annoying sounds"
 set cursorline                    " Highlight current line
 set noshowmode                    " Don't show the current mode (airline.vim takes care of us)
 set t_vb=                         " disable flashing
+set nobackup                      " no backups, swp files
+set nowb
+set noswapfile
 
 
 "----------------------------------------------------------------------------"

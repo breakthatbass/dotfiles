@@ -78,7 +78,9 @@ if (rln == 1)
 	:set rnu
 endif
 
-"COLOR THEME STUFF ----------------------
+"COLOR THEME STUFF ---------------------
+"
+"seoul256 color theme stuff-------------
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 23
@@ -87,16 +89,30 @@ endif
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
 
-if system('date +%H') > 15
+" set dark mode as default
+let g:seoul256_background = 235
+colo seoul256
+set background=dark
+
+" dark: set dark mode
+function! s:dark()
   let g:seoul256_background = 235
   colo seoul256
   set background=dark
-else
+endfunction
+
+" light: set light mode
+function! s:light()
   let g:seoul256_light_background = 252
   colo seoul256-light
   set background=light
-endif
+endfunction
 
+" set the functions as commands
+command! Light :call <SID>light()
+command! Dark :call <SID>dark()
+
+"--------------------------------------
 " airline themes can be found at: https://github.com/vim-airline/vim-airline/wiki/Screenshots
 let g:airline_theme = 'minimalist'
 
@@ -116,6 +132,3 @@ endif
 syntax enable
 filetype plugin indent on
 
-" get time
-nmap <F3> i<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc>
-imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>

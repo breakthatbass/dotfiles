@@ -27,6 +27,10 @@ Plugin 'amix/vim-zenroom2'
 Plugin 'maxbrunsfeld/vim-yankstack'         " save your most recent yanks. usage: :Yanks
 Plugin 'fatih/vim-go'                       " go support in vim
 Plugin 'rust-lang/rust.vim'                 " rust support in vim
+Plugin 'mattn/webapi-vim'
+Plugin 'cocopon/iceberg.vim'                " iceberg color theme
+Plugin 'arcticicestudio/nord-vim'           " nord color theme
+
 
 "All of your Plugins must be added before the following line
 call vundle#end()						" required
@@ -79,7 +83,19 @@ if (rln == 1)
 endif
 
 "COLOR THEME STUFF ---------------------
-"
+
+
+function! s:what_colors()
+
+  let color_list = ['seoul256', 'seoul256-light', 'iceberg', 'nord-vim']
+  
+  for col in color_list
+    echo col
+  endfor
+endfunction
+
+command! Colors :call <SID>what_colors()
+
 "seoul256 color theme stuff-------------
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
@@ -111,6 +127,16 @@ endfunction
 " set the functions as commands
 command! Light :call <SID>light()
 command! Dark :call <SID>dark()
+
+function! s:get_input()
+  let i = system("curl -s https://raw.githubusercontent.com/breakthatbass/advent_of_code2020/main/day01/input_test")
+  echo i
+endfunction
+
+command! Input :call <SID>get_input()
+
+command Exec new | read !curl -s https://raw.githubusercontent.com/breakthatbass/advent_of_code2020/main/day01/input_test
+
 
 "--------------------------------------
 " airline themes can be found at: https://github.com/vim-airline/vim-airline/wiki/Screenshots

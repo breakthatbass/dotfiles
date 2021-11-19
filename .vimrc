@@ -33,6 +33,8 @@ Plugin 'arcticicestudio/nord-vim'           " nord color theme
 Plugin 'Badacadabra/vim-archery'            " archery color theme
 Plugin 'nvie/vim-flake8'                    " PEP 8 python syntax checking
 Plugin 'jistr/vim-nerdtree-tabs'            " like it syas, nerdtree tabs
+Plugin 'dracula/vim'
+Plugin 'bbchung/clighter'
 
 
 "All of your Plugins must be added before the following line
@@ -72,6 +74,7 @@ set encoding=utf-8
 
 
 let python_highlight_all=1
+let g:clighter_autostart = 1
 
 "----------------------------------------------------------------------------"
 "   OTHER SETTINGS                                                           "

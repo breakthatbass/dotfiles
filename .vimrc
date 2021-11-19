@@ -30,6 +30,9 @@ Plugin 'rust-lang/rust.vim'                 " rust support in vim
 Plugin 'mattn/webapi-vim'
 Plugin 'cocopon/iceberg.vim'                " iceberg color theme
 Plugin 'arcticicestudio/nord-vim'           " nord color theme
+Plugin 'Badacadabra/vim-archery'            " archery color theme
+Plugin 'nvie/vim-flake8'                    " PEP 8 python syntax checking
+Plugin 'jistr/vim-nerdtree-tabs'            " like it syas, nerdtree tabs
 
 
 "All of your Plugins must be added before the following line
@@ -40,6 +43,7 @@ filetype plugin indent on			" required
 "----------------------------------------------------------------------------"
 "   BASIC SETTINGS                                                           "
 "----------------------------------------------------------------------------"
+
 
 syntax on                         " syntax highlighting
 set t_Co=256
@@ -64,7 +68,10 @@ set t_vb=                         " disable flashing
 set nobackup                      " no backups, swp files
 set nowb
 set noswapfile
+set encoding=utf-8
 
+
+let python_highlight_all=1
 
 "----------------------------------------------------------------------------"
 "   OTHER SETTINGS                                                           "
@@ -110,36 +117,6 @@ let g:seoul256_background = 235
 colo seoul256
 set background=dark
 
-" dark: set dark mode
-function! s:dark()
-  let g:seoul256_background = 235
-  colo seoul256
-  set background=dark
-endfunction
-
-" light: set light mode
-function! s:light()
-  let g:seoul256_light_background = 252
-  colo seoul256-light
-  set background=light
-endfunction
-
-" set the functions as commands
-command! Light :call <SID>light()
-command! Dark :call <SID>dark()
-
-function! s:get_input()
-  let i = system("curl -s https://raw.githubusercontent.com/breakthatbass/advent_of_code2020/main/day01/input_test")
-  echo i
-endfunction
-
-command! Input :call <SID>get_input()
-
-command Exec new | read !curl -s https://raw.githubusercontent.com/breakthatbass/advent_of_code2020/main/day01/input_test
-
-
-"--------------------------------------
-" airline themes can be found at: https://github.com/vim-airline/vim-airline/wiki/Screenshots
 let g:airline_theme = 'minimalist'
 
 " NERDtree settings ---------------------
@@ -158,3 +135,67 @@ endif
 syntax enable
 filetype plugin indent on
 
+
+"----------------------------------------------------------------------------"
+"   FUNCTIONS                                                                "
+"----------------------------------------------------------------------------"
+
+" set dark mode as default
+let g:seoul256_background = 235
+colo seoul256
+set background=dark
+
+" dark: set dark mode
+function! s:dark()
+  let g:seoul256_background = 235
+  colo seoul256
+  set background=dark
+endfunction
+
+" light: set light mode
+function! s:light()
+  let g:seoul256_light_background = 252
+  colo seoul256-light
+  set background=light
+endfunction
+
+" set the functions as commands
+command! Light :call <SID>light()
+command! Dark :call <SID>dark()
+
+
+" list all the color themes that are loaded as plugins
+function! s:what_colors()
+  let color_list = ['seoul256', 'seoul256-light', 'iceberg', 'nord-vim']
+  
+  for col in color_list
+    echo col
+  endfor
+endfunction
+
+command! Colors :call <SID>what_colors()
+
+" compile and run c prgrams easier
+
+" gcc: short cut to compile C programs in Vim
+function! s:gcc()
+  :exec call system('gcc -Wall -fsanitize=address ' . expand('%'))
+endfunction
+
+command! Gcc :call <SID>gcc()
+
+function! s:runc()
+  :! ./a.out
+endfunction
+
+command! Runc :call <SID>runc()
+
+  " testing out something...
+function! s:get_input()
+  let i = system("curl -s https://raw.githubusercontent.com/breakthatbass/advent_of_code2020/main/day01/input_test")
+  echo i
+endfunction
+
+command! Input :call <SID>get_input()
+
+command Exec new | read !curl -s https://raw.githubusercontent.com/breakthatbass/advent_of_code2020/main/day01/input_test

@@ -34,7 +34,7 @@ Plugin 'Badacadabra/vim-archery'            " archery color theme
 Plugin 'nvie/vim-flake8'                    " PEP 8 python syntax checking
 Plugin 'jistr/vim-nerdtree-tabs'            " like it syas, nerdtree tabs
 Plugin 'dracula/vim'
-Plugin 'bbchung/clighter'
+"Plugin 'bbchung/clighter'
 
 
 "All of your Plugins must be added before the following line
@@ -74,7 +74,7 @@ set encoding=utf-8
 
 
 let python_highlight_all=1
-let g:clighter_autostart = 1
+"let g:clighter_autostart = 1
 
 "----------------------------------------------------------------------------"
 "   OTHER SETTINGS                                                           "
@@ -182,7 +182,7 @@ command! Colors :call <SID>what_colors()
 
 " gcc: short cut to compile C programs in Vim
 function! s:gcc()
-  :exec call system('gcc -Wall -fsanitize=address ' . expand('%'))
+  :exec system('gcc -Wall -fsanitize=address ' . expand('%'))
 endfunction
 
 command! Gcc :call <SID>gcc()

@@ -187,8 +187,9 @@ endfunction
 
 command! Gcc :call <SID>gcc()
 
+" run a compiled c program and direct the output into a buffer
 function! s:runc()
-  :! ./a.out
+  :new | r ! ./a.out
 endfunction
 
 command! Runc :call <SID>runc()

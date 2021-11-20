@@ -13,7 +13,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'junegunn/goyo.vim'                  " goyo focus mode for writing in vim
-Plugin 'junegunn/fzf'                       " the greatness of fzf in vim
+Plugin 'junegunn/fzf', {'do': { -> fzf#install()}}  " the greatness of fzf in vim
+Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/seoul256.vim'              " colortheme
 Plugin 'junegunn/limelight.vim'             " hyper focus writing in vim
 Plugin 'jiangmiao/auto-pairs'               " auto close parentheses, brackets, quotes
@@ -34,7 +35,6 @@ Plugin 'Badacadabra/vim-archery'            " archery color theme
 Plugin 'nvie/vim-flake8'                    " PEP 8 python syntax checking
 Plugin 'jistr/vim-nerdtree-tabs'            " like it syas, nerdtree tabs
 Plugin 'dracula/vim'
-"Plugin 'bbchung/clighter'
 
 
 "All of your Plugins must be added before the following line
@@ -73,8 +73,14 @@ set noswapfile
 set encoding=utf-8
 
 
-let python_highlight_all=1
-"let g:clighter_autostart = 1
+"----------------------------------------------------------------------------"
+"   MAPPINGS                                                                 "
+"----------------------------------------------------------------------------
+
+" use Ctrl-f to call fzf :Files to search files
+nnoremap <silent> <C-f> :Files<CR>
+
+
 
 "----------------------------------------------------------------------------"
 "   OTHER SETTINGS                                                           "
@@ -97,7 +103,7 @@ endif
 
 function! s:what_colors()
 
-  let color_list = ['seoul256', 'seoul256-light', 'iceberg', 'nord-vim']
+  let color_list = ['seoul256', 'seoul256-light', 'iceberg', 'nord-vim', 'vim-code-dark', 'vim-archery', 'dracula']
   
   for col in color_list
     echo col
@@ -194,12 +200,24 @@ endfunction
 
 command! Runc :call <SID>runc()
 
-  " testing out something...
-function! s:get_input()
-  let i = system("curl -s https://raw.githubusercontent.com/breakthatbass/advent_of_code2020/main/day01/input_test")
-  echo i
+" usage: :Nog [command] <year> <day>
+function! s:Call_nog(...) abort
+  if a:0 != 3
+    echom "usage: :Nog [command] <year> <day>"
+  endif
+
+  let l:year = a:2
+  let l:day = a:3
+
+  if a:1 == "input"
+    let l:cmd = "nog --input --year=" . l:year . " --day=" . l:day
+    let p = system(cmd)
+    :tabnew
+    :put=p
+  endif
 endfunction
 
-command! Input :call <SID>get_input()
+command! -nargs=+ Nog :call <SID>Call_nog(<f-args>)
 
-command Exec new | read !curl -s https://raw.githubusercontent.com/breakthatbass/advent_of_code2020/main/day01/input_test
+
+    

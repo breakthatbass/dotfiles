@@ -80,8 +80,16 @@ set encoding=utf-8
 " use Ctrl-f to call fzf :Files to search files
 nnoremap <silent> <C-f> :Files<CR>
 
+" use Ctrl-h to show a history of commands in a window
+nnoremap <silent> <C-h> :History:<CR>
 
+" use Ctrl-c to show a history of git commits in a window (requires vim-fugitive)
+nnoremap <silent> <C-c> :Commits<CR>
 
+" Ctrl-g commits for current buffer (file)
+nnoremap <silent> <C-g> :BCommits<CR>"
+"
+"
 "----------------------------------------------------------------------------"
 "   OTHER SETTINGS                                                           "
 "----------------------------------------------------------------------------"
@@ -99,18 +107,6 @@ if (rln == 1)
 endif
 
 "COLOR THEME STUFF ---------------------
-
-
-function! s:what_colors()
-
-  let color_list = ['seoul256', 'seoul256-light', 'iceberg', 'nord-vim', 'vim-code-dark', 'vim-archery', 'dracula']
-  
-  for col in color_list
-    echo col
-  endfor
-endfunction
-
-command! Colors :call <SID>what_colors()
 
 "seoul256 color theme stuff-------------
 " seoul256 (dark):
@@ -149,11 +145,6 @@ filetype plugin indent on
 "   FUNCTIONS                                                                "
 "----------------------------------------------------------------------------"
 
-" set dark mode as default
-let g:seoul256_background = 235
-colo seoul256
-set background=dark
-
 " dark: set dark mode
 function! s:dark()
   let g:seoul256_background = 235
@@ -173,16 +164,6 @@ command! Light :call <SID>light()
 command! Dark :call <SID>dark()
 
 
-" list all the color themes that are loaded as plugins
-function! s:what_colors()
-  let color_list = ['seoul256', 'seoul256-light', 'iceberg', 'nord-vim']
-  
-  for col in color_list
-    echo col
-  endfor
-endfunction
-
-command! Colors :call <SID>what_colors()
 
 " compile and run c prgrams easier
 

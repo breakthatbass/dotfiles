@@ -35,6 +35,7 @@ Plugin 'Badacadabra/vim-archery'            " archery color theme
 Plugin 'nvie/vim-flake8'                    " PEP 8 python syntax checking
 Plugin 'jistr/vim-nerdtree-tabs'            " like it syas, nerdtree tabs
 Plugin 'dracula/vim'
+Plugin 'breakthatbass/vim-ripgrep'
 
 
 "All of your Plugins must be added before the following line
@@ -63,7 +64,7 @@ set laststatus=2                  " show status bar, even if one file is open
 set directory^=$HOME/.vim/tmp//   " put all .swp files here
 set ignorecase                    " search commands are case insensitive
 set mouse=a                       " allow mouse interaction
-set visualbell                    " turn off annoying sounds"
+set visualbell                    " turn off annoying sounds
 set cursorline                    " Highlight current line
 set noshowmode                    " Don't show the current mode (airline.vim takes care of us)
 set t_vb=                         " disable flashing
@@ -117,10 +118,15 @@ endif
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
 
-" set dark mode as default
-let g:seoul256_background = 235
-colo seoul256
-set background=dark
+let s:col = "nord"
+if (s:col == "seoul")
+  " set dark mode as default
+  let g:seoul256_background = 235
+  colo seoul256
+  set background=dark
+else
+  colorscheme nord
+endif
 
 let g:airline_theme = 'minimalist'
 

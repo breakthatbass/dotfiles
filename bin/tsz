@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# get the height and width of a terminal
+
+width=$(tput cols)
+height=$(tput lines)
+
+echo "width: $width"
+echo "height: $height"

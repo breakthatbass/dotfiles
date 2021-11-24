@@ -15,6 +15,7 @@ sudo apt install tmux
 apt-get install silversearcher-ag
 sudo apt-get install fzf
 sudo apt install bat
+sudo apt-get install ripgrep
 sudo apt install fd-find
 ln -s $(which fdfind) ~/.local/bin/fd
 

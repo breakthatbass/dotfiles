@@ -50,7 +50,7 @@ filetype plugin indent on			" required
 
 syntax on                         " syntax highlighting
 set t_Co=256
-set t_ut=
+set t_ut=''
 
 set tabstop=3 softtabstop=3       " tab -> 4 chars long, soft -> 4 spaces long
 set shiftwidth=3                  " better autotab spacing

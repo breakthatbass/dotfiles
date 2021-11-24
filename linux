@@ -12,6 +12,12 @@ sudo apt-get install manpages-dev
 sudo apt install curl
 sudo apt install vim
 sudo apt install tmux
+apt-get install silversearcher-ag
+sudo apt-get install fzf
+sudo apt install bat
+sudo apt install fd-find
+ln -s $(which fdfind) ~/.local/bin/fd
+
 
 # install visual studio code
 sudo snap install --classic code

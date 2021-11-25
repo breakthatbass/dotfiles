@@ -20,7 +20,7 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]];
 then
   
-  usbs=$((ls /dev/cu.usb* | awk '{print $1}') 2>/dev/null)
+  usbs=`(ls /dev/cu.usb* | awk '{print $1}') 2>/dev/null`
   
   if [[ !$usb ]]; then
     echo 'no devices detected'

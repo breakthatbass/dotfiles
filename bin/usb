@@ -20,9 +20,10 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]];
 then
   
-  usbs=`(ls /dev/cu.usb* | awk '{print $1}') 2>/dev/null`
+  usbs=`ls /dev/cu.usb* | awk '{print $1}'`
   
   if [[ !$usbs ]]; then
+    echo
     echo 'no devices detected'
     exit 0
   fi
@@ -36,12 +37,19 @@ then
 elif [[ "$OSTYPE" == "linux-gnu"* ]];
 then
  
-  # todo: error check here like above 
-  ls /dev/ttyACMO
+  usb_id=`ls /dev/serial/by-id`
+  usb_path=`ls /dev/serial/by_path`
+
+  if [[ !$usb_id ]] ; then
+    echo
+    echo 'no devices detected'
+    exit 0
+  fi
+
+  echo $usb_id
   echo
-  ls /dev/serial/by-id
+  echo $usb_path
   echo
-  ls /dev/serial/by-path
 
 else
   echo "not supported"

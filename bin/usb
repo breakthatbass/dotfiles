@@ -22,7 +22,7 @@ then
   
   usbs=`(ls /dev/cu.usb* | awk '{print $1}') 2>/dev/null`
   
-  if [[ !$usb ]]; then
+  if [[ !$usbs ]]; then
     echo 'no devices detected'
     exit 0
   fi

@@ -24,7 +24,7 @@ then
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]];
 then
- 
+
   ls /dev/ttyACMO
   ls /dev/serial/by-id
   ls /dev/serial/by-path

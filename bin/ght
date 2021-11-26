@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# get github token
+
+cat $HOME/gh_token
+
+

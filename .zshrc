@@ -42,7 +42,6 @@ alias arm-g++='arm-none-eabi-g++'
 export BAT_THEME=Nord  # color them for bat (cat replacement)
 
 
-
 ######################################################
 # FUNCTIONS                                          #
 ######################################################
@@ -87,4 +86,9 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 # add homemade scripts to path
 export PATH="$HOME/bin:$PATH"
 # mspdebug looks for this environment variable
-export MSPDEBUG_TILIB_PATH=~/ti/msp430-gcc/bin/export PATH="/usr/local/sbin:$PATH"
+export MSPDEBUG_TILIB_PATH=~/ti/msp430-gcc/bin/
+
+# homemade scripts
+export PATH="/usr/local/sbin:$PATH"
+
+#/System/Library/Frameworks/Python.framework/Versions/Current/Headers

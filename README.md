@@ -8,6 +8,8 @@ cd dotfiles
 ./install
 ```
 
-## note:
-the linux installation of programs is lacking compared to the MacOS
-installation.
+after installation, run:
+```
+dotfiles
+```
+to see a list of each script, a description, and usage.

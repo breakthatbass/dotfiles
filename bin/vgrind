@@ -1,8 +1,9 @@
 #!/bin/bash
+#
+# more easily run valgrind without extra junk, save results in file
+#
+# usage: vgrind executable
 
-#####################################################################
-# more easily run valgrind without extra junk, save results in file #
-#####################################################################
 if [ "$#" -ne 2  ]; then
     echo "usage: vgrind <compiled file>
 else

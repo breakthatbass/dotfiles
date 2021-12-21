@@ -1,6 +1,7 @@
 #!/bin/bash
-
+#
 # add and commit in one go
+#
 # usage: gco file 'commit message'
 
 if [ "$#" -ne 2  ]; then

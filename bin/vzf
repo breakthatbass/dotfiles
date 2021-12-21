@@ -1,8 +1,8 @@
 #!/bin/bash
-
-######################################################
-# incorporate fzf and vim better when opening a file #
-######################################################
+#
+# use fzf to search and preview files before opeing in vim
+#
+# usage: vzf
 
 # colors for printing
 RED='\033[1;31m'

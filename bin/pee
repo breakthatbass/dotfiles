@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# display amount of free and used memory
+#
+# usage: pee [-gmkb] (run `pee -h' for more usage`)
+
+
 from psutil import virtual_memory, swap_memory
 from argparse import ArgumentParser
 import sys

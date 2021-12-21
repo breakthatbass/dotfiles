@@ -1,8 +1,8 @@
 #!/bin/bash
-
-######################################################
-# cd command to use fzf to find directories          #
-######################################################
+#
+# cd command to use fzf to find directories
+#
+# usage: cdp
 
 if [[ "$#" != 0 ]]; then
     builtin cd "$@";

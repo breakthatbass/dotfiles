@@ -1,8 +1,7 @@
 #!/bin/bash
-
+#
 # find out lanuages and bytes in a github repo
-# sort of useless but fun
-
+#
 # usage: lang <user> <repo>
 
 if [ -z "$1" ] || [ -z "$2" ]

@@ -4,8 +4,18 @@
 #
 # usage: dotfiles
 
+
+# colors for printing
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+PURP='\033[1;34m'
+BLUE='\033[1;36m'
+NC='\033[0m' # No Color
+
+
 PATH_TO_SCRIPTS="$HOME/projects/dotfiles/bin/"
 SCRIPTS=$(ls $PATH_TO_SCRIPTS)
+
 
 # parse comment info from a file
 function parse_script() {
@@ -37,7 +47,7 @@ function parse_script() {
 
 function main() {
   for script in $SCRIPTS; do
-    echo $script
+    echo -e ${BLUE}$script${NC}
     parse_script "$PATH_TO_SCRIPTS$script"
     echo
   done

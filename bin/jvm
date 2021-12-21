@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+#
+# script to compile and run java program quicker for use with Algorithms textbook
+#
+# usage: jvm file.java [-lrq] (see file for further usage)
+
 
 '''
 created by: taylor gamache

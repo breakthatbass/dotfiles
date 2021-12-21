@@ -1,15 +1,9 @@
 #!/bin/bash
+#
+# check what's connected in the usb ports (for UART to devices)
+#
+# usage: usb
 
-##############################################################################
-#  usb - check what's connected in the usb ports.                            #
-#                                                                            #
-#  this is mostly to be used for opening a UART communication                #
-#  port between a PC and a micrcontroller.                                   #
-#                                                                            #
-#  usage: usb                                                                #
-#                                                                            #
-#  taylor gamache - 11-13-2021                                               #
-##############################################################################
 
 if [ $# -gt 0 ];
 then

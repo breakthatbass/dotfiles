@@ -5,7 +5,7 @@
 # usage: dotfiles
 
 PATH_TO_SCRIPTS="$HOME/projects/dotfiles/bin/"
-SCRIPTS=$(ls $base)
+SCRIPTS=$(ls $PATH_TO_SCRIPTS)
 
 # parse comment info from a file
 function parse_script() {
@@ -38,7 +38,7 @@ function parse_script() {
 function main() {
   for script in $SCRIPTS; do
     echo $script
-    parse_script "$PATH_TO_SCRIPT$script"
+    parse_script "$PATH_TO_SCRIPTS$script"
     echo
   done
 }

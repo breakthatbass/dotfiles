@@ -32,7 +32,7 @@ function parse_script() {
       continue
     elif [[ $line == "# "* ]]; then
       # we have a description or usage line
-      printf '\t%s\n' "${line##'# '}"
+      printf '    %s\n' "${line##'# '}"
       print_cnt=$(($print_cnt + 1))
       if [[ $print_cnt == 2  ]]; then
         break
@@ -47,7 +47,7 @@ function parse_script() {
 
 function main() {
   for script in $SCRIPTS; do
-    echo -e ${BLUE}$script${NC}
+    echo -e "  ${BLUE}$script${NC}"
     parse_script "$PATH_TO_SCRIPTS$script"
     echo
   done

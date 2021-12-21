@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# list scripts, descriptions, and usage
+#
+# usage: dotfiles
+
+PATH_TO_SCRIPTS="$HOME/projects/dotfiles/bin/"
+SCRIPTS=$(ls $base)
+
+# parse comment info from a file
+function parse_script() {
+  # we only want to print 2 lines, keep track
+  local print_cnt
+
+  print_cnt=0
+  while IFS= read -r line
+  do
+    if [[ $line == "#" ]]; then
+      continue
+    elif [[ $line == "#!/"* ]]; then
+      # don't print shebangs
+      continue
+    elif [[ $line == "# "* ]]; then
+      # we have a description or usage line
+      printf '\t%s\n' "${line##'# '}"
+      print_cnt=$(($print_cnt + 1))
+      if [[ $print_cnt == 2  ]]; then
+        break
+      fi
+    else
+      continue
+    fi
+  done < "$1"
+}
+
+
+
+function main() {
+  for script in $SCRIPTS; do
+    echo $script
+    parse_script "$PATH_TO_SCRIPT$script"
+    echo
+  done
+}
+
+main # ignore any arguments when running script

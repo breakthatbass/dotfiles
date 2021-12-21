@@ -8,8 +8,4 @@ cd dotfiles
 ./install
 ```
 
-after installation, run:
-```
-dotfiles
-```
-to see a list of each script, a description, and usage.
+after installation, run: `$ dotfiles` to see a list of each script, a description, and usage.

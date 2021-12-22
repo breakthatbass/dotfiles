@@ -8,4 +8,4 @@ cd dotfiles
 ./install
 ```
 
-after installation, run: `$ dotfiles` to see a list of each script, a description, and usage.
+See the [`bin`](https://github.com/breakthatbass/dotfiles/tree/main/bin) directory for all my scripts with usage and a description for each one. Or after installing, run the `dotfiles` script to see it in your terminal.

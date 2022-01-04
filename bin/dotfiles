@@ -6,15 +6,12 @@
 
 
 # colors for printing
-RED='\033[1;31m'
-GREEN='\033[1;32m'
-PURP='\033[1;34m'
 BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
 
 PATH_TO_SCRIPTS="$HOME/projects/dotfiles/bin/"
-SCRIPTS=$(ls $PATH_TO_SCRIPTS)
+SCRIPTS=$(ls "$PATH_TO_SCRIPTS")
 
 
 # parse comment info from a file
@@ -33,7 +30,7 @@ function parse_script() {
     elif [[ $line == "# "* ]]; then
       # we have a description or usage line
       printf '    %s\n' "${line##'# '}"
-      print_cnt=$(($print_cnt + 1))
+      print_cnt=$((print_cnt + 1))
       if [[ $print_cnt == 2  ]]; then
         break
       fi

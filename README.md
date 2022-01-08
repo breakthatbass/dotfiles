@@ -1,11 +1,9 @@
-# dotfiles
-my `.` files
+# dotfiles 🦦
+Supports MacOS and Linux (Ubuntu).
 
-## installation
+### **installation:**
 ```
-git clone https://github.com/breakthatbass/dotfiles.git
-cd dotfiles
-./install
+sh -c "`curl -fsSl https://raw.githubusercontent.com/breakthatbass/dotfiles/main/install`"
 ```
 
 See the [`bin`](https://github.com/breakthatbass/dotfiles/tree/main/bin) directory for all my scripts with usage and a description for each one. Or after installing, run the `dotfiles` script to see it in your terminal.

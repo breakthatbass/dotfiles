@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# show a tmux cheatsheet in the terminal
+#
+# usage: cmux
+
+curl -s http://cheat.sh/tmux

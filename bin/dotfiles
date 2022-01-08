@@ -7,6 +7,7 @@
 
 # colors for printing
 BLUE='\033[1;36m'
+GREEN='\033[1;32m'
 NC='\033[0m' # No Color
 
 
@@ -43,7 +44,16 @@ function parse_script() {
 
 
 function main() {
+
+  # title
+  echo -e "\n${GREEN}bin 🗑${NC}\n"
+
   for script in $SCRIPTS; do
+    # don't print the readme file
+    if [[ $script == "README.md" ]]; then
+      continue
+    fi
+
     echo -e "  ${BLUE}$script${NC}"
     parse_script "$PATH_TO_SCRIPTS$script"
     echo

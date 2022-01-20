@@ -10,6 +10,7 @@ PURP='\033[0;35m'
 NC='\033[0m' # No Color
 
 DEBUG=1
+OS=$(uname)
 
 if [ "$DEBUG" > 0 ]; then
 	echo -e "	${RED}DEBUG mode${NC}"
@@ -21,7 +22,7 @@ done_task() {
 }
 
 
-if [ "$OSTYPE" == "linux-gnu"* ]; then
+if [ "$OS" = "Linux" ]; then
 	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
 	echo -e "🍬  Installing the goodies"
 
@@ -29,7 +30,7 @@ if [ "$OSTYPE" == "linux-gnu"* ]; then
 	./linux
   done_task
 
-elif [ "$OSTYPE" == "darwin"* ];
+elif [ "$OS" == "Darwin" ];
 then
 	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
 	if [ DEBUG -gt 0 ];
@@ -58,7 +59,7 @@ then
 
 else
 	# if we're here then you got a job that probably requires windows...womp womp
-	echo -e "${RED}$OSTYPE${NC} is not supported...womp womp"
+	echo -e "${RED}$OS${NC} is not supported...womp womp"
 	echo "exiting..."
 	exit 1
 fi

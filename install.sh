@@ -23,7 +23,7 @@ done_task() {
 
 
 if [ "$OS" = "Linux" ]; then
-	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
+	echo -e "	OS --> ${BLUE}$OS${NC}"
 	echo -e "🍬  Installing the goodies"
 
   # run the linux script remotely
@@ -32,7 +32,7 @@ if [ "$OS" = "Linux" ]; then
 
 elif [ "$OS" == "Darwin" ];
 then
-	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
+	echo -e "	OS --> ${BLUE}$OS${NC}"
 	if [ DEBUG -gt 0 ];
 	then
     echo "in DEBUG branch"
@@ -65,7 +65,7 @@ else
 fi
 
 
-if [ "$DEBUG" -lt 1 ];
+if [ "$DEBUG" < 1 ];
 then
   # here we pput all the stuff we want to do that works
   # on both Darwin and Linux

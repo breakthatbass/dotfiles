@@ -14,6 +14,7 @@ sudo apt install build-essential
 sudo apt-get install manpages-dev
 
 # some misc stuff
+sudo apt-get install git
 sudo apt install curl
 sudo apt install vim
 sudo apt install tmux

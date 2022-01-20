@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # install script --> detect the OS and install all the necessary goodies
 
@@ -11,8 +11,7 @@ NC='\033[0m' # No Color
 
 DEBUG=1
 
-if (( "$DEBUG" > 0 ));
-then
+if [ "$DEBUG" > 0 ]; then
 	echo -e "	${RED}DEBUG mode${NC}"
 fi
 
@@ -22,8 +21,7 @@ done_task() {
 }
 
 
-if [[ "$OSTYPE" == "linux-gnu"* ]];
-then
+if [ "$OSTYPE" == "linux-gnu"* ]; then
 	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
 	echo -e "🍬  Installing the goodies"
 
@@ -31,10 +29,10 @@ then
 	./linux
   done_task
 
-elif [[ "$OSTYPE" == "darwin"* ]];
+elif [ "$OSTYPE" == "darwin"* ];
 then
 	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
-	if [[ DEBUG -gt 0 ]];
+	if [ DEBUG -gt 0 ];
 	then
     echo "in DEBUG branch"
     # this section is for testing stuff in the script
@@ -66,7 +64,7 @@ else
 fi
 
 
-if [[ DEBUG -lt 1 ]];
+if [ DEBUG -lt 1 ];
 then
   # here we pput all the stuff we want to do that works
   # on both Darwin and Linux

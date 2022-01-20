@@ -26,8 +26,8 @@ if [ "$OS" = "Linux" ]; then
 	echo -e "	OS --> ${BLUE}$OSTYPE${NC}"
 	echo -e "🍬  Installing the goodies"
 
-  # install everything in this linux file
-	./linux
+  # run the linux script remotely
+  /bin/bash -c "$(curl -fsSl https://raw.githubusercontent.com/breakthatbass/dotfiles/main/linux)"
   done_task
 
 elif [ "$OS" == "Darwin" ];
@@ -65,7 +65,7 @@ else
 fi
 
 
-if [ DEBUG -lt 1 ];
+if [ "$DEBUG" -lt 1 ];
 then
   # here we pput all the stuff we want to do that works
   # on both Darwin and Linux

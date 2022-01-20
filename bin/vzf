@@ -5,17 +5,14 @@
 # usage: vzf
 
 # colors for printing
-RED='\033[1;31m'
 GREEN='\033[1;32m'
 PURP='\033[1;34m'
-BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
 if [[ "$#" == 0 ]];
 then
   # no args, search for files and preview with fzf
-  vim -o `fzf --preview 'bat --style=numbers \
-    --color=always --line-range :500 {}'`
+  vim -o "$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')"
 else
   # command was used wrong
   echo -e "usage: ${PURP}vzf${NC}"

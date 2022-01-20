@@ -32,29 +32,18 @@ if [ "$OS" = "Linux" ]; then
 elif [ "$OS" == "Darwin" ];
 then
 	echo -e "	OS --> ${BLUE}$OS${NC}"
-	if [ "$DEBUG" -gt 0 ];
-	then
-    echo "in DEBUG branch"
-    # this section is for testing stuff in the script
-    # without having to go through the homebrew nonsense
-    # and other installation stuff
-		
-		echo -e "🍬  Installing the goodies"
-    done_task
-	
-	else
-		echo -e "🍬  Installing the goodies"
+  
+  echo -e "🍬  Installing the goodies"
 
-		# install homebrew
-    echo -e "installing ${PURP}HomeBrew${NC} 🍺"
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    done_task		
-    
-		echo -e "🍬  Installing the goodies"
+  # install homebrew
+  echo -e "installing ${PURP}HomeBrew${NC} 🍺"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  done_task		
+  
+  echo -e "🍬  Installing the goodies"
 # run the brew file to install all the goodies
-		brew bundle
-    done_task
-	fi
+  brew bundle
+  done_task
 
 else
 	# if we're here then you got a job that probably requires windows...womp womp
@@ -92,3 +81,9 @@ done_task
 
 # configure fzf for vim
 set rtp+=/usr/local/opt/fzf
+
+# set up vundle for vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# run :PluginInstall from the command line
+# to install all the vim plugins in the .vimrc file
+vim +PluginInstall +qall

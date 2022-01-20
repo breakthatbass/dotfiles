@@ -70,6 +70,11 @@ then
   # here we pput all the stuff we want to do that works
   # on both Darwin and Linux
 
+  # download the dotfiles
+  cd ~/projects
+  git clone https://github.com/breakthatbass/dotfiles.git
+  cd dotfiles/
+
 	echo -e "creating symlinked ${PURP}dotfiles${NC}"
 # create the symlinks for the config files
 	ln -sfn ~/projects/dotfiles/.zshrc ~

@@ -9,7 +9,7 @@ BLUE='\033[1;36m'
 PURP='\033[0;35m'
 NC='\033[0m' # No Color
 
-DEBUG=1
+DEBUG=0
 OS=$(uname)
 
 if [ "$DEBUG" > 0 ]; then

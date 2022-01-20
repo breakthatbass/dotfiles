@@ -11,7 +11,7 @@ NC='\033[0m' # No Color
 
 DEBUG=1
 
-if [[ $DEBUG -gt 0 ]];
+if (( "$DEBUG" > 0 ));
 then
 	echo -e "	${RED}DEBUG mode${NC}"
 fi

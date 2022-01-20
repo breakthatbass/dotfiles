@@ -4,7 +4,6 @@
 
 # colors for printing
 RED='\033[1;31m'
-GREEN='\033[1;32m'
 BLUE='\033[1;36m'
 PURP='\033[0;35m'
 NC='\033[0m' # No Color
@@ -33,7 +32,7 @@ if [ "$OS" = "Linux" ]; then
 elif [ "$OS" == "Darwin" ];
 then
 	echo -e "	OS --> ${BLUE}$OS${NC}"
-	if [ DEBUG -gt 0 ];
+	if [ "$DEBUG" -gt 0 ];
 	then
     echo "in DEBUG branch"
     # this section is for testing stuff in the script
@@ -64,38 +63,32 @@ else
 	exit 1
 fi
 
+# download the dotfiles
+mkdir "$HOME"/projects
+cd "$HOME"/projects || exit
+git clone https://github.com/breakthatbass/dotfiles.git
+cd dotfiles/ || exit
 
-if [ "$DEBUG" < 1 ];
-then
-  # here we pput all the stuff we want to do that works
-  # on both Darwin and Linux
-
-  # download the dotfiles
-  cd ~/projects
-  git clone https://github.com/breakthatbass/dotfiles.git
-  cd dotfiles/
-
-	echo -e "creating symlinked ${PURP}dotfiles${NC}"
+echo -e "creating symlinked ${PURP}dotfiles${NC}"
 # create the symlinks for the config files
-	ln -sfn ~/projects/dotfiles/.zshrc ~
-	ln -sfn ~/projects/dotfiles/.vimrc ~
-	ln -sfn ~/projects/dotfiles/.tmux.conf ~
-  # bin directory
-  ln -s ~/projects/dotfiles/bin ~
-  # terminal stuff
-  ln -s ~/projects/dotfiles/terminal ~
-  done_task
-  
-  # make ZSH default shell
-  echo -e "setting ${PURP}ZSH${NC} as default shell"
-  sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
-  done_task
+ln -sfn ~/projects/dotfiles/.zshrc ~
+ln -sfn ~/projects/dotfiles/.vimrc ~
+ln -sfn ~/projects/dotfiles/.tmux.conf ~
+# bin directory
+ln -s ~/projects/dotfiles/bin ~
+# terminal stuff
+ln -s ~/projects/dotfiles/terminal ~
+done_task
 
-  echo -e "installing ${PURP}oh-my-zsh${NC}"
-  # install oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  done_task
+# make ZSH default shell
+echo -e "setting ${PURP}ZSH${NC} as default shell"
+sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
+done_task
 
-  # configure fzf for vim
-  set rtp+=/usr/local/opt/fzf
-fi
+echo -e "installing ${PURP}oh-my-zsh${NC}"
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+done_task
+
+# configure fzf for vim
+set rtp+=/usr/local/opt/fzf

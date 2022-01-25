@@ -41,6 +41,11 @@ alias arm-g++='arm-none-eabi-g++'
 
 export BAT_THEME=Nord  # color them for bat (cat replacement)
 
+##
+## stuff for goto script
+export GOTO_DIR=$HOME/projects/
+alias goto='. goto'
+
 
 ######################################################
 # FUNCTIONS                                          #

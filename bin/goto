@@ -5,16 +5,20 @@
 #
 # usgae: goto
 
-if [[ -z "${GOTO_DIR}" ]]; then
+# first check if GOTO_DIR is defined
+if [[ -z "$GOTO_DIR" ]]; then
   echo "environment variable GOTO_DIR not defined"
   return
 fi
 
+current_dir=$(pwd)
 
-cd "${GOTO_DIR}"
-
+cd "$GOTO_DIR"
+# run fzf but only show directories
 LOC=$(ls -d */ | fzf)
 
-cd $LOC
-
-
+if [[ "$LOC" == '' ]]; then
+  cd $current_dir
+else
+  cd $LOC
+fi

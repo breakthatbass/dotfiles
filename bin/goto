@@ -15,10 +15,11 @@ current_dir=$(pwd)
 
 cd "$GOTO_DIR"
 # run fzf but only show directories
-LOC=$(ls -d */ | fzf)
+goto_dirs=$(ls -d */ | fzf)
 
-if [[ "$LOC" == '' ]]; then
+# if escape is entered, go back to where we started
+if [[ "$goto_dirs" == '' ]]; then
   cd $current_dir
 else
-  cd $LOC
+  cd $goto_dirs
 fi

@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# go to $GOTO_DIR and run fzf. Then cd into it.
+# requires alias goto=". goto"
+#
+# usgae: goto
+
+if [[ -z "${GOTO_DIR}" ]]; then
+  echo "environment variable GOTO_DIR not defined"
+  return
+fi
+
+
+cd "${GOTO_DIR}"
+
+LOC=$(ls -d */ | fzf)
+
+cd $LOC
+
+

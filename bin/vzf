@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# use fzf to search and preview files before opeing in vim
+# use fzf to search and preview files before opeing in vim or vs code
 #
-# usage: vzf
+# usage: vzf ['--vim', '--vs'] (no arg opens vim)
 
 OS=$(uname)
 

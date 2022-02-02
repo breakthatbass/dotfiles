@@ -36,9 +36,10 @@ Plugin 'nvie/vim-flake8'                    " PEP 8 python syntax checking
 Plugin 'jistr/vim-nerdtree-tabs'            " like it syas, nerdtree tabs
 Plugin 'dracula/vim'
 Plugin 'breakthatbass/vim-ripgrep'
+Plugin 'jaredgorski/spacecamp'              " colors for the final frontier
 
 
-"All of your Plugins must be added before the following line
+" All of your Plugins must be added before the following line
 call vundle#end()						" required
 filetype plugin indent on			" required
 
@@ -74,6 +75,28 @@ set noswapfile
 set encoding=utf-8
 
 
+"++++++++++++
+" GO STUFF  +
+"++++++++++++
+filetype plugin indent on
+
+set autowrite
+
+" Go syntax highlighting
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+
+" Auto formatting and importing
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+
+" Status line types/signatures
+let g:go_auto_type_info = 1
+
+
 "----------------------------------------------------------------------------"
 "   MAPPINGS                                                                 "
 "----------------------------------------------------------------------------
@@ -89,6 +112,18 @@ nnoremap <silent> <C-c> :Commits<CR>
 
 " Ctrl-g commits for current buffer (file)
 nnoremap <silent> <C-g> :BCommits<CR>"
+
+
+"++++++++++++
+" GO STUFF  +
+"++++++++++++
+
+" Map keys for most used commands.
+" Ex: `\b` for building, `\r` for running and `\b` for running test.
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
 "
 "
 "----------------------------------------------------------------------------"
@@ -151,6 +186,18 @@ filetype plugin indent on
 "   FUNCTIONS                                                                "
 "----------------------------------------------------------------------------"
 
+
+" Run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+
 " dark: set dark mode
 function! s:dark()
   let g:seoul256_background = 235
@@ -206,5 +253,3 @@ endfunction
 
 command! -nargs=+ Nog :call <SID>Call_nog(<f-args>)
 
-
-    

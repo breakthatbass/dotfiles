@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# get the IP address of the current system
+#
+# usage: addr
+
+OS=$(uname)
+
+if [ "$OS" = "Linux" ]; then
+  hostname -I | awk '{print $1}'
+elif [ "$OS" = "Darwin" ]; then
+  ifconfig | grep "\<inet\>" | awk '{print $2}' | tail -n 1
+else
+  echo "OS not supported...are you on Windows??"
+fi

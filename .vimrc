@@ -73,6 +73,7 @@ set nobackup                      " no backups, swp files
 set nowb
 set noswapfile
 set encoding=utf-8
+set listchars=tab:>-
 
 
 "++++++++++++
@@ -153,7 +154,7 @@ endif
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
 
-let s:col = "nord"
+let s:col = "seoul"
 if (s:col == "seoul")
   " set dark mode as default
   let g:seoul256_background = 235
@@ -217,6 +218,9 @@ command! Light :call <SID>light()
 command! Dark :call <SID>dark()
 
 
+"++++++++++++++++++++++
+" EXPERIMENTAL STUFF  +
+"++++++++++++++++++++++
 
 " compile and run c prgrams easier
 
@@ -233,6 +237,18 @@ function! s:runc()
 endfunction
 
 command! Runc :call <SID>runc()
+
+
+" short cut to 'go run' command in vim
+function! s:gorun(...)
+  if a:0 != 0
+    :exec system('go run ' . expand('%'))
+  else
+    :exec system('go run ' . expand('%') . a:000)
+  endif
+endfunction
+command! -nargs=+ Gr :call <SID>gorun(<f-args>)
+
 
 " usage: :Nog [command] <year> <day>
 function! s:Call_nog(...) abort

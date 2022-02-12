@@ -1,4 +1,4 @@
-# dotfiles 🦦
+# dotfiles 
 Supports MacOS and Linux (Ubuntu).
 
 ### **installation:**

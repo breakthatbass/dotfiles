@@ -61,10 +61,13 @@ def handle_args(args):
     '''remove file name from args. if no args, assume 0'''
     if len(args) > 1:
         args.pop(0) # remove file name from args
-        if args[0] == '-h' or args[0] == '--help':
+        if args[0] == 'help':
             print('usage: conv [n1 n2 n3 ...]')
+            print(' subcommands:')
+            print('   table  - print a table of numbers 0-15 in all 3 bases')
+            print('   help - print this message and quit')
             sys.exit(0)
-        elif args[0] == '-t' or '--table':
+        elif args[0] == 'table':
             print_bases()
             sys.exit(0)
     else:

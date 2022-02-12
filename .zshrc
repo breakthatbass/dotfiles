@@ -12,8 +12,6 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git zsh-autosuggestions)
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -25,12 +23,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	# loading this causes problems in Linux, only load if on MacOS
 	autoload -U promptinit; promptinit
 	prompt pure
+
+  # i just havent installed on linux yet
+  # so for now, just load auto suggestions on darwin
+  plugins=(git zsh-autosuggestions)
 fi
 
 # For a full list of active aliases, run `alias`.
 alias py="python3"
 alias tend="tmux kill-session"
-alias otool="otool -tvV"  # make default flags for otool
+#alias otool="otool -tvV"  # make default flags for otool
 alias vi='vim'
 alias tree='tree -C'	# print dir tree with colors
 # use fzf to preivew files
@@ -38,6 +40,8 @@ alias pf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 # C & C++ cross-compilers for compiling programs for ARM Cortex architecture on MacOS
 alias arm-gcc='arm-none-eabi-gcc'
 alias arm-g++='arm-none-eabi-g++'
+# always typing got when i mean to type go
+alias got='go'
 
 export BAT_THEME=Nord  # color them for bat (cat replacement)
 

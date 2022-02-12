@@ -46,6 +46,16 @@ def make_hex_upper(h):
     s = h.lstrip('0x')
     return f'0x{s.upper()}'
 
+def print_bases():
+    '''print a table containing number 0-15 in all bases'''
+    start = 0
+    print('{:<5} {:<12} {:<12}'.format('dec', 'bin', 'hex'))
+    while start < 16:
+        str = '{:<5} {:<12} {:<12}'.format(int(start), bin(start).lstrip('0b'),
+            hex(start).lstrip('0x'))
+        print(str)
+        start += 1
+
 
 def handle_args(args):
     '''remove file name from args. if no args, assume 0'''
@@ -53,6 +63,9 @@ def handle_args(args):
         args.pop(0) # remove file name from args
         if args[0] == '-h' or args[0] == '--help':
             print('usage: conv [n1 n2 n3 ...]')
+            sys.exit(0)
+        elif args[0] == '-t' or '--table':
+            print_bases()
             sys.exit(0)
     else:
         print('usage: conv [n1 n2 n3 ...]')

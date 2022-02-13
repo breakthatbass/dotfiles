@@ -114,7 +114,10 @@ nnoremap <silent> <C-h> :History:<CR>
 nnoremap <silent> <C-c> :Commits<CR>
 
 " Ctrl-g commits for current buffer (file)
-nnoremap <silent> <C-g> :BCommits<CR>"
+nnoremap <silent> <C-g> :BCommits<CR>
+
+" Ctrl-q to exit a buffer without saving
+nnoremap <silent> <C-q> :q!<CR>
 
 
 "++++++++++++
@@ -271,3 +274,43 @@ endfunction
 
 command! -nargs=+ Nog :call <SID>Call_nog(<f-args>)
 
+
+" functions for working through the Go Programming
+" Language book by Alan Donovan & Brian Kernighan
+"
+" usage:
+" :Gopl [command] [a1, a2, ...]
+" 
+" commands:
+" run
+"         --> compile and run the current program
+"         --> same as `go run prog.go`
+" build
+"         --> compile the current prog to an equivelent bin name
+"         --> same as `go build -o prog prog.go`
+
+function! s:gopl(...) abort
+  " deal with arguments
+  if a:0 < 1
+    echom "usage: :Gopl [command] [arg1, args2, ...]"
+    return 1
+  endif
+
+  if a:1 == "run"
+    " check for additional args
+    if a:0 > 1
+      " if so, concat them to a string
+      let l:args = join(a:000[1:], ' ')
+      let l:cmd = "go run " . expand("%") . " " . l:args
+    else
+      let l:cmd = "go run " . expand("%")
+    endif
+  endif
+  
+  let p = system(l:cmd)
+  :tabnew
+  :put=p
+
+endfunction
+
+command! -nargs=* Gopl :call <SID>gopl(<f-args>)

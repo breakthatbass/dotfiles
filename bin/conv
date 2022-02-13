@@ -46,11 +46,12 @@ def make_hex_upper(h):
     s = h.lstrip('0x')
     return f'0x{s.upper()}'
 
-def print_bases():
-    '''print a table containing number 0-15 in all bases'''
-    start = 0
+def print_bases(n):
+    '''print a table containing number 0-15 in all bases up to n'''
+    start = 1
     print('{:<5} {:<12} {:<12}'.format('dec', 'bin', 'hex'))
-    while start < 16:
+    print('{:<5} {:<12} {:<12}'.format('0', '0', '0'))
+    while start < n:
         str = '{:<5} {:<12} {:<12}'.format(int(start), bin(start).lstrip('0b'),
             hex(start).lstrip('0x'))
         print(str)
@@ -64,12 +65,16 @@ def handle_args(args):
         if args[0] == 'help':
             print('usage: conv [n1 n2 n3 ...]')
             print(' subcommands:')
-            print('   table  - print a table of numbers 0-15 in all 3 bases')
+            print('   table [n] - print a table of numbers 0-n in all 3 bases')
             print('   help - print this message and quit')
             sys.exit(0)
         elif args[0] == 'table':
-            print_bases()
-            sys.exit(0)
+            try:
+                print_bases(int(args[1]))
+            except:
+                print_bases(16)
+            finally:
+                sys.exit(0)
     else:
         print('usage: conv [n1 n2 n3 ...]')
         sys.exit(1)

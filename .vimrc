@@ -38,6 +38,8 @@ Plugin 'dracula/vim'
 Plugin 'breakthatbass/vim-ripgrep'
 Plugin 'jaredgorski/spacecamp'              " colors for the final frontier
 Plugin 'jeaye/color_coded'                  " get proper highlighting for c, c++, obj-c
+Plugin 'vimwiki/vimwiki'
+
 
 
 " All of your Plugins must be added before the following line
@@ -75,6 +77,7 @@ set nowb
 set noswapfile
 set encoding=utf-8
 set listchars=tab:>-
+set nocompatible
 
 
 

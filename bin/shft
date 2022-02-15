@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+#
+# shift bits in a number n places
+#
+# usage: shift int [<<, >>] n (ex. shift 12 << 1)
+
+import sys
+import os
+import subprocess as sp
+
+if len(sys.argv) != 2:
+    print('usage: shift int [<<, >>] n (ex. shift 12 << 1)')
+    sys.exit(1)
+
+e = sys.argv[1]
+
+bits = e.split(' ')
+
+try:
+  num = int(bits[0])
+  op = bits[1]
+  toshift = int(bits[2])
+except ValueError as er:
+  print(er)
+  sys.exit(1)
+
+orig = sp.getoutput(f'conv {num}')
+
+if op == '<<':
+  new = num << toshift
+elif op == '>>':
+  new = num >> toshift
+elif op == '|':
+  new = num | toshift
+elif op == '^':
+  new = num ^ toshift
+elif op == '&':
+  new = num & toshift
+else:
+  print('poo on you')
+
+res = sp.getoutput(f'conv {new}')
+
+print('------- original --------')
+
+print()
+print(orig)
+print()
+
+print('------- shifted ---------')
+
+print()
+print(res)
+print()

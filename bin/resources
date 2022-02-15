@@ -1,7 +1,0 @@
-#!/bin/bash
-#
-# open up resources repo in a webpage
-#
-# usage: resources
-
-open https://github.com/breakthatbass/resources

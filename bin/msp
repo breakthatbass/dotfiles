@@ -1,7 +1,0 @@
-#!/bin/bash
-#
-# open the webpage to the msp430 header files containing register and bit setting.
-#
-# usage: msp
-
-open https://github.com/breakthatbass/msp430-env/blob/main/msp430fr5994.h

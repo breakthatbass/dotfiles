@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# get github token (linux)
-#
-# usage: ght
-
-cat $HOME/gh_token
-
-

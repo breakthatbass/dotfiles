@@ -239,12 +239,23 @@ endfunction
 
 command! Gcc :call <SID>gcc()
 
-" run a compiled c program and direct the output into a buffer
-function! s:runc()
-  :new | r ! ./a.out
+" run a compiled c program with optional args
+" and output into a new buffer
+function! s:runc(...)
+  if a:0 > 0
+    let l:args = join(a:000[0:], ' ')
+    let l:cmd = "./a.out " . l:args
+  else
+    let l:cmd = "./a.out"
+  endif
+  
+  let p = system(l:cmd)
+  :tabnew
+  :put=p  
+
 endfunction
 
-command! Runc :call <SID>runc()
+command! -nargs=* Runc :call <SID>runc(<f-args>)
 
 
 " short cut to 'go run' command in vim

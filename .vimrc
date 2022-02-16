@@ -319,6 +319,8 @@ function! s:gopl(...) abort
     else
       let l:cmd = "go run " . expand("%")
     endif
+  elseif a:1 == "build"
+        
   endif
   
   let p = system(l:cmd)
@@ -328,3 +330,12 @@ function! s:gopl(...) abort
 endfunction
 
 command! -nargs=* Gopl :call <SID>gopl(<f-args>)
+
+
+function! s:glow()
+  " run current open file through Glow
+  ! glow %
+  
+endfunction
+
+command! Glow :call <SID>glow()

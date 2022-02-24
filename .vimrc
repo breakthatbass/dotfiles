@@ -39,6 +39,9 @@ Plugin 'breakthatbass/vim-ripgrep'
 Plugin 'jaredgorski/spacecamp'              " colors for the final frontier
 Plugin 'jeaye/color_coded'                  " get proper highlighting for c, c++, obj-c
 Plugin 'vimwiki/vimwiki'
+Plugin 'joshdick/onedark.vim'
+Plugin 'sainnhe/sonokai'
+Plugin 'frenzyexists/aquarium-vim', { 'branch': 'develop' }
 
 
 

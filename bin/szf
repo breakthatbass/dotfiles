@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# run summon with fzf
+#
+# usage: szf
+
+d=$(summon list | fzf)
+
+if [[ "$d" == '' ]]; then
+  exit 0
+else
+  summon "$d"
+fi

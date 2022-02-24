@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# create a new summon page
+#
+# usage: spage <page-name>
+
+if [ "$#" == 0 ]; then
+  exit 1
+fi
+
+vim $HOME/.config/summon/$1

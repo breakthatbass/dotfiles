@@ -6,20 +6,29 @@
 
 OS=$(uname)
 
+if [[ "$# > 0" || "$1" != "--vs" ]]; then
+    echo "usage: vzf [optional arg: '--vs']"
+    exit 1
+fi
+
+fzf=$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')
+
+# if ESC is used, exit the TUI
+if [ "$fzf" == '' ]; then
+    exit 0
+fi
+
 if [[ "$#" == 0 ]];
 then
-  # no args, search for files and preview with fzf
-    vim -o  "$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')"
-# command was used wrong
+    
+    vim -o "$fzf"
+
 elif [[ "$1" == "--vs" ]];
 then
     if [ "$OS" = "Linux" ];
     then
         echo "todo..."
     else
-        open -a 'visual studio code' "$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')"
+        open -a 'visual studio code' "$fzf" 
     fi
-elif [[ "$1" == "--vim" ]];
-then
-    vim -o  "$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')"
 fi

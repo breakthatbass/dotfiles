@@ -41,6 +41,7 @@ Plugin 'jeaye/color_coded'                  " get proper highlighting for c, c++
 Plugin 'vimwiki/vimwiki'
 Plugin 'joshdick/onedark.vim'
 Plugin 'sainnhe/sonokai'
+Plugin 'marcopaganini/mojave-vim-theme'
 Plugin 'frenzyexists/aquarium-vim', { 'branch': 'develop' }
 
 
@@ -183,7 +184,7 @@ map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "set a toggle switch for when i don't want NERDTree to automatically open
-let nerd_auto=0
+let nerd_auto=1
 if (nerd_auto == 1)
 	autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup
 endif

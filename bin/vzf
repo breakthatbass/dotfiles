@@ -6,7 +6,7 @@
 
 OS=$(uname)
 
-if [[ "$# > 0" || "$1" != "--vs" ]]; then
+if [[ "$#" > 0 && "$1" != "--vs" ]]; then
     echo "usage: vzf [optional arg: '--vs']"
     exit 1
 fi

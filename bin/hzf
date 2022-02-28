@@ -1,9 +1,10 @@
 #!/bin/bash
 #
-# use fzf to search through zsh histroy and execute one
+# use fzf to search through zsh history and execute a command
 #
 # usage: hzf
 
+# history is a built in command and can't be called 
 HISTFILE=$HOME/.bash_history
 set -o history
 

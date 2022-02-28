@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# use fzf to search through zsh histroy and execute one
+#
+# usage: hzf
+
+HISTFILE=$HOME/.bash_history
+set -o history
+
+d=$(history | awk '{$1=""; print}' | fzf)
+
+if [[ "$d" == '' ]]; then
+  exit 0
+else
+  eval "$d"
+fi 

@@ -184,7 +184,7 @@ map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "set a toggle switch for when i don't want NERDTree to automatically open
-let nerd_auto=1
+let nerd_auto=0
 if (nerd_auto == 1)
 	autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup
 endif
@@ -262,84 +262,8 @@ endfunction
 command! -nargs=* Runc :call <SID>runc(<f-args>)
 
 
-" short cut to 'go run' command in vim
-function! s:gorun(...)
-  if a:0 != 0
-    :exec system('go run ' . expand('%'))
-  else
-    :exec system('go run ' . expand('%') . a:000)
-  endif
-endfunction
-command! -nargs=+ Gr :call <SID>gorun(<f-args>)
-
-
-" usage: :Nog [command] <year> <day>
-function! s:Call_nog(...) abort
-  if a:0 != 3
-    echom "usage: :Nog [command] <year> <day>"
-  endif
-
-  let l:year = a:2
-  let l:day = a:3
-
-  if a:1 == "input"
-    let l:cmd = "nog --input --year=" . l:year . " --day=" . l:day
-    let p = system(cmd)
-    :tabnew
-    :put=p
-  endif
-endfunction
-
-command! -nargs=+ Nog :call <SID>Call_nog(<f-args>)
-
-
-" functions for working through the Go Programming
-" Language book by Alan Donovan & Brian Kernighan
-"
-" usage:
-" :Gopl [command] [a1, a2, ...]
-" 
-" commands:
-" run
-"         --> compile and run the current program
-"         --> same as `go run prog.go`
-" build
-"         --> compile the current prog to an equivelent bin name
-"         --> same as `go build -o prog prog.go`
-
-function! s:gopl(...) abort
-  " deal with arguments
-  if a:0 < 1
-    echom "usage: :Gopl [command] [arg1, args2, ...]"
-    return 1
-  endif
-
-  if a:1 == "run"
-    " check for additional args
-    if a:0 > 1
-      " if so, concat them to a string
-      let l:args = join(a:000[1:], ' ')
-      let l:cmd = "go run " . expand("%") . " " . l:args
-    else
-      let l:cmd = "go run " . expand("%")
-    endif
-  elseif a:1 == "build"
-        
-  endif
-  
-  let p = system(l:cmd)
-  :tabnew
-  :put=p
-
-endfunction
-
-command! -nargs=* Gopl :call <SID>gopl(<f-args>)
-
-
 function! s:glow()
-  " run current open file through Glow
-  ! glow %
-  
+  ! glow README.md
 endfunction
 
 command! Glow :call <SID>glow()

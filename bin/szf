@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# run summon with fzf
+# run summon with fzf to pick a page
 #
 # usage: szf
 

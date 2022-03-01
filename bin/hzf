@@ -6,10 +6,10 @@
 
 # history is a built in command and can't be called in a script
 # this is a work around and allows calling it
-HISTFILE=$HOME/.bash_history
+HISTFILE=$HOME/.zsh_history
 set -o history
 
-d=$(history | awk '{$1=""; print}' | fzf)
+d=$(history | awk -F ';' '{print $2}' | fzf)
 
 if [[ "$d" == '' ]]; then
   exit 0

@@ -2,7 +2,7 @@
 #
 # connect to a port to communicate with a MCU through UART
 #
-# usage: ./msp [port]
+# usage: ./connect [port]
 # port argument is optional
 
 import glob

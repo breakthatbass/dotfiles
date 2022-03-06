@@ -28,7 +28,6 @@ Plugin 'amix/vim-zenroom2'
 Plugin 'maxbrunsfeld/vim-yankstack'         " save your most recent yanks. usage: :Yanks
 Plugin 'fatih/vim-go'                       " go support in vim
 Plugin 'rust-lang/rust.vim'                 " rust support in vim
-Plugin 'mattn/webapi-vim'
 Plugin 'cocopon/iceberg.vim'                " iceberg color theme
 Plugin 'arcticicestudio/nord-vim'           " nord color theme
 Plugin 'Badacadabra/vim-archery'            " archery color theme
@@ -43,6 +42,7 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'sainnhe/sonokai'
 Plugin 'marcopaganini/mojave-vim-theme'
 Plugin 'frenzyexists/aquarium-vim', { 'branch': 'develop' }
+Plugin 'breakthatbass/tumnus.vim'
 
 
 
@@ -73,7 +73,6 @@ set directory^=$HOME/.vim/tmp//   " put all .swp files here
 set ignorecase                    " search commands are case insensitive
 set mouse=a                       " allow mouse interaction
 set visualbell                    " turn off annoying sounds
-set cursorline                    " Highlight current line
 set noshowmode                    " Don't show the current mode (airline.vim takes care of us)
 set t_vb=                         " disable flashing
 set nobackup                      " no backups, swp files
@@ -82,6 +81,13 @@ set noswapfile
 set encoding=utf-8
 set listchars=tab:>-
 set nocompatible
+
+" toggle the cursor line
+" sometimes i want it sometimes i don't
+let s:cline_on = 0
+if (s:cline_on == 1)
+  set cursorline
+endif
 
 
 
@@ -157,6 +163,8 @@ endif
 
 "COLOR THEME STUFF ---------------------
 
+let python_highlight_all=1
+
 "seoul256 color theme stuff-------------
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
@@ -166,20 +174,22 @@ endif
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
 
-let s:col = "seoul"
+let s:col = "tumnus"
 if (s:col == "seoul")
   " set dark mode as default
   let g:seoul256_background = 235
   colo seoul256
   set background=dark
+elseif (s:col == "tumnus")
+  colorscheme tumnus
 else
-  colorscheme nord
+  colorscheme
 endif
 
 let g:airline_theme = 'minimalist'
 
 " NERDtree settings ---------------------
-map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n	
+map <C-n> :NERDTreeToggle<CR>	" open and close NERDTree with ctrl+n
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -252,10 +262,10 @@ function! s:runc(...)
   else
     let l:cmd = "./a.out"
   endif
-  
+
   let p = system(l:cmd)
   :tabnew
-  :put=p  
+  :put=p
 
 endfunction
 

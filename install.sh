@@ -8,12 +8,7 @@ BLUE='\033[1;36m'
 PURP='\033[0;35m'
 NC='\033[0m' # No Color
 
-DEBUG=0
 OS=$(uname)
-
-if [ "$DEBUG" > 0 ]; then
-	echo -e "	${RED}DEBUG mode${NC}"
-fi
 
 # print this when we're done installing something
 done_task() {
@@ -72,11 +67,6 @@ done_task
 # make ZSH default shell
 echo -e "setting ${PURP}ZSH${NC} as default shell"
 sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
-done_task
-
-echo -e "installing ${PURP}oh-my-zsh${NC}"
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 done_task
 
 # configure fzf for vim

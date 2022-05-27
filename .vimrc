@@ -3,9 +3,9 @@
 "----------------------------------------------------------------------------"
 
 
-"----------------------------------------------------------------------------"
-"   VUNDLE & PLUGINS                                                         "
-"----------------------------------------------------------------------------"
+"----------------------"
+"   VUNDLE & PLUGINS   "
+"----------------------"
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -43,51 +43,123 @@ Plugin 'sainnhe/sonokai'
 Plugin 'marcopaganini/mojave-vim-theme'
 Plugin 'frenzyexists/aquarium-vim', { 'branch': 'develop' }
 Plugin 'breakthatbass/tumnus.vim'
-
+Plugin 'catppuccin/nvim', {'name': 'catppuccin'}
+Plugin 'wojciechkepka/vim-github-dark'
+Plugin 'xero/sourcerer.vim'
+Plugin 'romainl/apprentice'
 
 
 " All of your Plugins must be added before the following line
 call vundle#end()						" required
 filetype plugin indent on			" required
 
-
 "----------------------------------------------------------------------------"
 "   BASIC SETTINGS                                                           "
 "----------------------------------------------------------------------------"
 
+set number		    " line numbers
+set numberwidth=1	" line nums space
+set relativenumber  " line numbers relative to cursor
+set wrap		    " write long lines into next line
+set linebreak		" break lines between strings
+set shiftwidth=2	" '<>' indents this many spaces
+set ignorecase      " search commands are case insensitive
+set backspace=indent,eol,start " make backspace work properly
+set mouse=a         " allow mouse interaction
+set visualbell      " turn off annoying sounds
+set noshowmode      " Don't show the current mode (airline.vim takes care of us)
+set t_vb=           " disable flashing
+set nobackup        " no backups, swp files
 
-syntax on                         " syntax highlighting
-set t_Co=256
-set t_ut=''
+colorscheme tumnus
+syntax on
 
-set tabstop=3 softtabstop=3       " tab -> 4 chars long, soft -> 4 spaces long
-set shiftwidth=3                  " better autotab spacing
-set smartindent                   " indent for me
-set nowrap                        " don't split words between lines
-set nu                            " show line numbers
-set incsearch                     " get results as you search
-set backspace=indent,eol,start    " make backspace work properly
-set textwidth=80
-set laststatus=2                  " show status bar, even if one file is open
-set directory^=$HOME/.vim/tmp//   " put all .swp files here
-set ignorecase                    " search commands are case insensitive
-set mouse=a                       " allow mouse interaction
-set visualbell                    " turn off annoying sounds
-set noshowmode                    " Don't show the current mode (airline.vim takes care of us)
-set t_vb=                         " disable flashing
-set nobackup                      " no backups, swp files
-set nowb
-set noswapfile
-set encoding=utf-8
-set listchars=tab:>-
-set nocompatible
 
-" toggle the cursor line
-" sometimes i want it sometimes i don't
-let s:cline_on = 0
-if (s:cline_on == 1)
-  set cursorline
-endif
+""""""""""""""""""
+"    MAPPINGS    "
+""""""""""""""""""
+
+let vimrc_location = "~/projects/dotfiles/.vimrc"
+
+let learning=0
+let mapleader = ","
+let maplocalleader = "\\"
+
+" move a line down with '-' key
+nnoremap - yyddp
+" move a line up with '_' key
+nnoremap _ yydd<Up><Up>p
+
+" upper case a string in normal mode with ,-u
+nnoremap <leader>u bveU <esc>
+
+" delete a line in insert mode with ,-d
+inoremap <leader>d <esc>ddi
+
+" upper case a string in insert mode with ,-u
+inoremap <leader>u <esc>bveU <esc>i
+
+" open up vimrc in a split window
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" source new changes in .vimrc without exiting vim
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" put double quotes around a string with ,"
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+
+" put single quotes around a string with ,'
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+
+" shift H to move cursor to beginning of line
+nnoremap H 0
+
+" shift L to move cursor to end of line
+nnoremap L $
+
+" exit insert mode with jk
+inoremap jk <esc>
+
+" comment out entire lines easily
+augroup comments
+    autocmd FileType c nnoremap <buffer> <localleader>c I//<esc>
+    autocmd FileType go nnoremap <buffer> <localleader>c I//<esc>
+    autocmd FileType java nnoremap <buffer> <localleader>c I//<esc>
+    autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+augroup END
+
+""""""""""""""""""
+"    fzf.vim     "
+""""""""""""""""""
+
+" use Ctrl-f to call fzf :Files to search files
+nnoremap <silent> <C-f> :Files<CR>
+
+" use Ctrl-h to show a history of commands in a window
+nnoremap <silent> <C-h> :History:<CR>
+
+" use Ctrl-c to show a history of git commits in a window (requires vim-fugitive)
+nnoremap <silent> <C-c> :Commits<CR>
+
+" Ctrl-g commits for current buffer (file)
+nnoremap <silent> <C-g> :BCommits<CR>
+
+" Ctrl-q to exit a buffer without saving
+nnoremap <silent> <C-q> :q!<CR>
+
+" turn off some buttons for learning
+"    inoremap <esc> <nop>
+"    nnoremap <Left> <nop>
+"    nnoremap <Right> <nop>
+"    nnoremap <Up> <nop>
+"    nnoremap <Down> <nop>
+
+""""""""""""""""""
+"    ABBREVS     "
+""""""""""""""""""
+
+iabbrev adn and
+iabbrev tehn then
+iabbrev prinvate private
 
 
 
@@ -112,79 +184,21 @@ let g:go_fmt_command = "goimports"
 " Status line types/signatures
 let g:go_auto_type_info = 1
 
-
-"----------------------------------------------------------------------------"
-"   MAPPINGS                                                                 "
-"----------------------------------------------------------------------------
-
-" use Ctrl-f to call fzf :Files to search files
-nnoremap <silent> <C-f> :Files<CR>
-
-" use Ctrl-h to show a history of commands in a window
-nnoremap <silent> <C-h> :History:<CR>
-
-" use Ctrl-c to show a history of git commits in a window (requires vim-fugitive)
-nnoremap <silent> <C-c> :Commits<CR>
-
-" Ctrl-g commits for current buffer (file)
-nnoremap <silent> <C-g> :BCommits<CR>
-
-" Ctrl-q to exit a buffer without saving
-nnoremap <silent> <C-q> :q!<CR>
-
-
-"++++++++++++
-" GO STUFF  +
-"++++++++++++
-
 " Map keys for most used commands.
 " Ex: `\b` for building, `\r` for running and `\b` for running test.
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
+    autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+    autocmd FileType go nmap <leader>r  <Plug>(go-run)
+    autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
-"
-"
-"----------------------------------------------------------------------------"
-"   OTHER SETTINGS                                                           "
-"----------------------------------------------------------------------------"
 
+""""""""""""""""""
+"  OTHER STUFF   "
+""""""""""""""""""
 " automatically run LimeLight when in Goyo
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!  " turn off the light when done!
 
-" set a toggle switch for relative line numbers
-let rln=1
-if (rln == 1)
-	" turn relative line numbers on
-	:set relativenumber
-	:set rnu
-endif
-
-"COLOR THEME STUFF ---------------------
-
 let python_highlight_all=1
-
-"seoul256 color theme stuff-------------
-" seoul256 (dark):
-"   Range:   233 (darkest) ~ 239 (lightest)
-"   Default: 23
-"
-" seoul256 (light):
-"   Range:   252 (darkest) ~ 256 (lightest)
-"   Default: 253
-
-let s:col = "tumnus"
-if (s:col == "seoul")
-  " set dark mode as default
-  let g:seoul256_background = 235
-  colo seoul256
-  set background=dark
-elseif (s:col == "tumnus")
-  colorscheme tumnus
-else
-  colorscheme
-endif
 
 let g:airline_theme = 'minimalist'
 
@@ -199,46 +213,6 @@ if (nerd_auto == 1)
 	autocmd vimenter * NERDTree		" autmatically open NERDTree on vim startup
 endif
 
-" LANGUAGE STUFF ------------------------
-" equired for rust plugin
-syntax enable
-filetype plugin indent on
-
-
-"----------------------------------------------------------------------------"
-"   FUNCTIONS                                                                "
-"----------------------------------------------------------------------------"
-
-
-" Run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-
-
-" dark: set dark mode
-function! s:dark()
-  let g:seoul256_background = 235
-  colo seoul256
-  set background=dark
-endfunction
-
-" light: set light mode
-function! s:light()
-  let g:seoul256_light_background = 252
-  colo seoul256-light
-  set background=light
-endfunction
-
-" set the functions as commands
-command! Light :call <SID>light()
-command! Dark :call <SID>dark()
-
 
 "++++++++++++++++++++++
 " EXPERIMENTAL STUFF  +
@@ -248,32 +222,24 @@ command! Dark :call <SID>dark()
 
 " gcc: short cut to compile C programs in Vim
 function! s:gcc()
-  :exec system('gcc -Wall -fsanitize=address ' . expand('%'))
-endfunction
+    :exec system('gcc -Wall -fsanitize=address ' . expand('%'))
+  endfunction
 
-command! Gcc :call <SID>gcc()
+  command! Gcc :call <SID>gcc()
 
-" run a compiled c program with optional args
-" and output into a new buffer
-function! s:runc(...)
-  if a:0 > 0
-    let l:args = join(a:000[0:], ' ')
-    let l:cmd = "./a.out " . l:args
-  else
-    let l:cmd = "./a.out"
-  endif
+  " run a compiled c program with optional args
+  " and output into a new buffer
+  function! s:runc(...)
+    if a:0 > 0
+      let l:args = join(a:000[0:], ' ')
+      let l:cmd = "./a.out " . l:args
+    else
+      let l:cmd = "./a.out"
+    endif
 
-  let p = system(l:cmd)
-  :tabnew
-  :put=p
+    let p = system(l:cmd)
+    :tabnew
+    :put=p
+  endfunction
 
-endfunction
-
-command! -nargs=* Runc :call <SID>runc(<f-args>)
-
-
-function! s:glow()
-  ! glow README.md
-endfunction
-
-command! Glow :call <SID>glow()
+  command! -nargs=* Runc :call <SID>runc(<f-args>)

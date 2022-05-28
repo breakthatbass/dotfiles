@@ -1,6 +1,5 @@
 # .zshrc
 
-export PATH=/Users/taylorgamache/var-fsl-yocto/sources/poky/bitbake/bin:$PATH
 
 C_INCLUDE_PATH=/usr/local/include
 # If you come from bash you might have to change your $PATH.
@@ -14,9 +13,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # For a full list of active aliases, run `alias`.
-alias ls='ls -G'    # enable colorized output
 alias py="python3"
-alias tend="tmux kill-session"
 alias tree='tree -C'	# print dir tree with colors
 # use fzf to preivew files
 alias pf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
@@ -24,12 +21,24 @@ alias pf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 alias got='go'
 alias l='ls -la'
 
-alias dot='cd $HOME/projects/dotfiles'
-alias glade='glade.exe'
 
 ## stuff for goto script
 export GOTO_DIR=$HOME/projects/
 alias goto='. goto'
+
+if [[ "$OSTYPE" ==  "darwin"* ]]; then
+    # this emulate the code command on linux
+    code() { touch $1 && open $1 -a "visual studio code" }
+    alias ls='ls -G' # enable colorized optput
+fi
+
+if [[ "$OSTYPE" == "linux"* ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    alias ls='ls --color'
+    alias dot='cd $HOME/projects/dotfiles'
+    alias glade='glade.exe'
+    export PATH=/Users/taylorgamache/var-fsl-yocto/sources/poky/bitbake/bin:$PATH
+fi
 
 
 ######################################################
@@ -46,13 +55,7 @@ gitignore() {  curl -L -s https://www.toptal.com/developers/gitignore/api/"$1" >
 # mkdir and cd into it
 mkcdir() { mkdir -p -- "$1" && cd -P -- "$1" }
 
-if [[ "$OSTYPE" ==  "darwin"* ]]; then
-    code() { touch $1 && open $1 -a "visual studio code" }
-fi
 
-######################################################
-# $PATH STUFF AND ENV VARIABLES                     #
-######################################################
 # PYTHON STUFF
 # Setting PATH for Python 3.8
 # The original version is saved in .bash_profile.pysave
@@ -76,7 +79,3 @@ export MSPDEBUG_TILIB_PATH=~/ti/msp430-gcc/bin/
 # homemade scripts
 export PATH="/usr/local/sbin:$PATH"
 
-# homebrew for linux on WSL
-if [[ "$OSTYPE" == "linux"* ]]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi

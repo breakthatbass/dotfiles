@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+import datetime
+import requests
+import os
+import sys
+import argparse
+import icecream as ic
+
+session_id = f'{os.environ["HOME"]}/.eggnog/sessionid.txt'
+
+today = datetime.date.today()
+
+parser = argparse.ArgumentParser(description='download puzzle inputs from advent of code')
+parser.add_argument('--day', default=today.day, help='day to get input for')
+parser.add_argument('--year', default=today.year, help='year to get input for')
+
+args = parser.parse_args()
+
+with open(session_id) as f:
+    cookie = f.readline().strip()
+
+
+aoc_url = f'https://adventofcode.com/{args.year}/day/{args.day}/input'
+
+print(aoc_url)
+
+#sys.exit()
+
+r = requests.get(aoc_url, cookies={"session": cookie})
+#print(r.text())
+
+sys.stdout.write(r.text + "\n")
+
+sys.stderr.write("OK\n")

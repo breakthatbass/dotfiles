@@ -57,12 +57,12 @@ filetype plugin indent on			" required
 "   BASIC SETTINGS                                                           "
 "----------------------------------------------------------------------------"
 
-set number		    " line numbers
-set numberwidth=1	" line nums space
+set number		      " line numbers
+set numberwidth=1	  " line nums space
 set relativenumber  " line numbers relative to cursor
-set wrap		    " write long lines into next line
-set linebreak		" break lines between strings
-set shiftwidth=2	" '<>' indents this many spaces
+set wrap		        " write long lines into next line
+set linebreak		    " break lines between strings
+set shiftwidth=2	  " '<>' indents this many spaces
 set ignorecase      " search commands are case insensitive
 set backspace=indent,eol,start " make backspace work properly
 set mouse=a         " allow mouse interaction
@@ -70,6 +70,15 @@ set visualbell      " turn off annoying sounds
 set noshowmode      " Don't show the current mode (airline.vim takes care of us)
 set t_vb=           " disable flashing
 set nobackup        " no backups, swp files
+set tabstop=3 softtabstop=3   " tab -> 4 chars long, soft -> 4 spaces long
+set smartindent
+set laststatus=2    " show status bar even if one file is open
+set ignorecase      " search command ignores cases
+set noshowmode      " don't show current mode. airline does it
+set t_vb=           " disable flashing
+set nobackup        " no backups
+set noswapfile
+set cursorline
 
 colorscheme tumnus
 syntax on
@@ -162,7 +171,6 @@ iabbrev tehn then
 iabbrev prinvate private
 
 
-
 "++++++++++++
 " GO STUFF  +
 "++++++++++++
@@ -190,6 +198,15 @@ let g:go_auto_type_info = 1
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
     autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
+" Run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
 
 """"""""""""""""""
 "  OTHER STUFF   "

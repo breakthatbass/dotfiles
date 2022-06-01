@@ -15,7 +15,8 @@ current_dir=$(pwd)
 
 cd "$GOTO_DIR"
 # run fzf but only show directories
-goto_dirs=$(ls -d */ | fzf)
+# prefix with `\` to prevent ls alias
+goto_dirs=$(\ls -d */ | fzf)
 
 # if escape is entered, go back to where we started
 if [[ "$goto_dirs" == '' ]]; then

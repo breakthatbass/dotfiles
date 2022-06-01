@@ -16,7 +16,6 @@ Plugin 'junegunn/goyo.vim'                  " goyo focus mode for writing in vim
 Plugin 'junegunn/fzf', {'do': { -> fzf#install()}}  " the greatness of fzf in vim
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/seoul256.vim'              " colortheme
-Plugin 'junegunn/limelight.vim'             " hyper focus writing in vim
 Plugin 'jiangmiao/auto-pairs'               " auto close parentheses, brackets, quotes
 Plugin 'wakatime/vim-wakatime'              " add wakatime to vim
 Plugin 'scrooloose/nerdtree'                " directory listing in vim
@@ -24,28 +23,14 @@ Plugin 'vim-airline/vim-airline'            " status bar for the bottom of windo
 Plugin 'vim-airline/vim-airline-themes'     " themes for airline
 Plugin 'tomasiser/vim-code-dark'            " colorscheme to match default vs code theme
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'amix/vim-zenroom2'
 Plugin 'maxbrunsfeld/vim-yankstack'         " save your most recent yanks. usage: :Yanks
 Plugin 'fatih/vim-go'                       " go support in vim
-Plugin 'rust-lang/rust.vim'                 " rust support in vim
-Plugin 'cocopon/iceberg.vim'                " iceberg color theme
 Plugin 'arcticicestudio/nord-vim'           " nord color theme
-Plugin 'Badacadabra/vim-archery'            " archery color theme
 Plugin 'nvie/vim-flake8'                    " PEP 8 python syntax checking
 Plugin 'jistr/vim-nerdtree-tabs'            " like it syas, nerdtree tabs
-Plugin 'dracula/vim'
 Plugin 'breakthatbass/vim-ripgrep'
-Plugin 'jaredgorski/spacecamp'              " colors for the final frontier
 Plugin 'jeaye/color_coded'                  " get proper highlighting for c, c++, obj-c
 Plugin 'vimwiki/vimwiki'
-Plugin 'joshdick/onedark.vim'
-Plugin 'sainnhe/sonokai'
-Plugin 'marcopaganini/mojave-vim-theme'
-Plugin 'frenzyexists/aquarium-vim', { 'branch': 'develop' }
-Plugin 'breakthatbass/tumnus.vim'
-Plugin 'catppuccin/nvim', {'name': 'catppuccin'}
-Plugin 'wojciechkepka/vim-github-dark'
-Plugin 'xero/sourcerer.vim'
 Plugin 'romainl/apprentice'
 
 
@@ -80,9 +65,18 @@ set nobackup        " no backups
 set noswapfile
 set cursorline
 
-colorscheme tumnus
-syntax on
+"seoul256 color theme stuff-------------
+" seoul256 (dark):
+"   Range:   233 (darkest) ~ 239 (lightest)
+"   Default: 235
+"
+" seoul256 (light):
+"   Range:   252 (darkest) ~ 256 (lightest)
+"   Default: 253"
 
+let g:seoul256_background = 233
+colorscheme seoul256
+syntax on
 
 """"""""""""""""""
 "    MAPPINGS    "
@@ -118,6 +112,9 @@ nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 
 " put single quotes around a string with ,'
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+
+" go to top of file with ,-t
+nnoremap <leader>t :1<cr>
 
 " shift H to move cursor to beginning of line
 nnoremap H 0
@@ -260,3 +257,56 @@ function! s:gcc()
   endfunction
 
   command! -nargs=* Runc :call <SID>runc(<f-args>)
+
+
+"
+"   use ctrl-down to move down 25 lines from current position
+function! s:move_down_25()
+  let l:pos = line(".")
+  let l:next_pos = l:pos + 25
+
+  if l:next_pos >= line("$")
+    echom "REACHED END OF FILE"
+  else
+    execute l:next_pos
+  endif
+endfunction
+
+command! Down :call <SID>move_down_25()
+
+nnoremap <silent> <C-Down> :Down<CR>
+
+"
+"   use ctrl-Up to move up 25 lines from current position
+function! s:move_up_25() abort
+  let l:pos = line(".")
+  let l:next_pos = l:pos - 25
+
+  if l:next_pos < 1
+    echom "REACHED TOP OF FILE"
+  else
+    execute l:next_pos
+  endif
+endfunction
+
+command! Up :call <SID>move_up_25()
+
+nnoremap <silent> <C-Up> :Up<CR>
+
+" dark: set dark mode
+function! s:dark()
+  colo seoul256
+  set background=dark
+endfunction
+
+" light: set light mode
+function! s:light()
+  let g:seoul256_light_background = 252
+  colo seoul256-light
+  set background=light
+endfunction
+
+" set the functions as commands
+command! Light :call <SID>light()
+command! Dark :call <SID>dark()
+

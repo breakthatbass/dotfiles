@@ -78,6 +78,9 @@ let g:seoul256_background = 233
 colorscheme seoul256
 syntax on
 
+autocmd FileType c colorscheme tumnus
+autocmd FileType go colorscheme tumnus
+
 """"""""""""""""""
 "    MAPPINGS    "
 """"""""""""""""""
@@ -267,6 +270,7 @@ function! s:move_down_25()
 
   if l:next_pos >= line("$")
     echom "REACHED END OF FILE"
+    execute line("$")
   else
     execute l:next_pos
   endif
@@ -284,6 +288,7 @@ function! s:move_up_25() abort
 
   if l:next_pos < 1
     echom "REACHED TOP OF FILE"
+    execute :1
   else
     execute l:next_pos
   endif

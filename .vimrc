@@ -63,7 +63,10 @@ set noshowmode      " don't show current mode. airline does it
 set t_vb=           " disable flashing
 set nobackup        " no backups
 set noswapfile
+set incsearch       " get search results as you type
+
 set cursorline
+
 
 "seoul256 color theme stuff-------------
 " seoul256 (dark):
@@ -112,6 +115,7 @@ inoremap <leader>u <esc>bveU <esc>i
 
 " open up vimrc in a split window
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
 " source new changes in .vimrc without exiting vim
 nnoremap <leader>sv :source $MYVIMRC<cr>
 

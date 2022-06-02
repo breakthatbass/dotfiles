@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+#
+# cheatshet for vim key mappings
+#
+# usage: vimrc
+
+import sys
+from termcolor import colored
+
+VIMRC_PATH = '/Users/taylorgamache/projects/dotfiles/.vimrc'
+last_line = ''
+DIVIDER = '\t'
+
+s = ['nnoremap', 'inoremap']
+
+with open(VIMRC_PATH, 'r') as vimrc:
+  lines = vimrc.readlines()
+  for line in lines:
+    l = line.split(' ')
+    #print(line, end='')
+    if l[0] in s:
+      if l[1] == '<silent>':
+        print(colored(f'{l[2] : <18}', 'blue'), end=DIVIDER)
+      else:
+        print(colored(f'{l[1] : <18}', 'blue'), end=DIVIDER)
+      print(last_line[1:])
+    last_line = line
+
+
+

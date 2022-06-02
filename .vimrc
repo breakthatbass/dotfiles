@@ -80,6 +80,7 @@ syntax on
 
 autocmd FileType c colorscheme tumnus
 autocmd FileType go colorscheme tumnus
+autocmd FileType python colorscheme tumnus
 
 """"""""""""""""""
 "    MAPPINGS    "
@@ -93,8 +94,12 @@ let maplocalleader = "\\"
 
 " move a line down with '-' key
 nnoremap - yyddp
+
 " move a line up with '_' key
 nnoremap _ yydd<Up><Up>p
+
+" insert a newline in normal mode
+nnoremap <leader><return> $i<Right><return><esc>
 
 " upper case a string in normal mode with ,-u
 nnoremap <leader>u bveU <esc>
@@ -288,7 +293,7 @@ function! s:move_up_25() abort
 
   if l:next_pos < 1
     echom "REACHED TOP OF FILE"
-    execute :1
+    execute 1
   else
     execute l:next_pos
   endif
@@ -306,7 +311,7 @@ endfunction
 
 " light: set light mode
 function! s:light()
-  let g:seoul256_light_background = 252
+  let g:seoul256_light_background = 256
   colo seoul256-light
   set background=light
 endfunction
